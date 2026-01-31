@@ -1,21 +1,31 @@
-GridironScript Product Specification
-AI-Generated NFL Fan Experience Platform
-Version: 1.0
-Last Updated: January 31, 2026
-Demo Matchup: Super Bowl LX — Seattle Seahawks vs. New England Patriots
+# GridironScript Product Specification
+## AI-Generated NFL Fan Experience Platform
 
-1. Executive Summary
-GridironScript is a digital-first, weekly-serialized football experience where fans submit predictions for real NFL matchups, and AI generates anime-style video recreations based on community-weighted outcomes. The platform combines fan engagement, prediction gaming, and AI video generation into a unique sports entertainment product.
+**Version:** 1.0  
+**Last Updated:** January 31, 2026  
+**Demo Matchup:** Super Bowl LX — Seattle Seahawks vs. New England Patriots
 
-Core Value Proposition:
+---
 
-Fans influence the narrative through prediction submissions
-AI generates cinematic anime-style game highlights
-Players wear authentic team uniforms with helmets obscuring faces (avoiding likeness issues)
-Weekly content drops create appointment viewing
-Demo Focus: Super Bowl LX — Seattle Seahawks (14-3, NFC Champions) vs. New England Patriots (14-3, AFC Champions), February 8, 2026
+# 1. Executive Summary
 
-2. Product Architecture Overview
+**GridironScript** is a digital-first, weekly-serialized football experience where fans submit predictions for real NFL matchups, and AI generates anime-style video recreations based on community-weighted outcomes. The platform combines fan engagement, prediction gaming, and AI video generation into a unique sports entertainment product.
+
+**Core Value Proposition:**
+- Fans influence the narrative through prediction submissions
+- AI generates cinematic anime-style game highlights
+- Players wear authentic team uniforms with helmets obscuring faces (avoiding likeness issues)
+- Weekly content drops create appointment viewing
+- **Mobile-first, extremely easy to use** — optimized for phones, minimal friction to predict
+- **Two simple tiers:** Free (all basics) and Superfan ($1.99/mo placeholder — 3x vote weight, early access, rewards)
+
+**Demo Focus:** Super Bowl LX — Seattle Seahawks (14-3, NFC Champions) vs. New England Patriots (14-3, AFC Champions), February 8, 2026
+
+---
+
+# 2. Product Architecture Overview
+
+```
 ┌──────────────────────────────────────────────────────────────────────────────────┐
 │                           GRIDIRON SCRIPT PLATFORM                               │
 ├──────────────────────────────────────────────────────────────────────────────────┤
@@ -54,296 +64,439 @@ Demo Focus: Super Bowl LX — Seattle Seahawks (14-3, NFC Champions) vs. New Eng
 │                              └────────────────┘    └────────────────┘           │
 │                                                                                  │
 └──────────────────────────────────────────────────────────────────────────────────┘
-URL Structure:
+```
 
-URL	Access	Purpose
-/	Public	Fan home, current matchup, how it works
-/predict	Logged-in users	Submit predictions
-/leaderboard	Public	XP rankings
-/profile	Logged-in users	User stats, history
-/admin	⚠️ Demo: Anyone	Dashboard (secret URL, not linked anywhere)
-/admin/*	⚠️ Demo: Anyone	Matchups, scripts, videos, users
-3. Demo Matchup: Super Bowl LX
-Team Profiles
-Seattle Seahawks (NFC Champions)
-Attribute	Value
-Record	14-3 (Regular Season)
-Seed	#1 NFC
-Head Coach	Mike Macdonald (2nd year)
-Key Players	Sam Darnold (QB), Devon Witherspoon (CB), Jaxon Smith-Njigba (WR)
-Playstyle	Balanced attack, Legion of Boom 2.0 defense
-Primary Colors	College Navy (#002244), Action Green (#69BE28)
-Super Bowl History	3 appearances, 1 win (XLVIII)
-New England Patriots (AFC Champions)
-Attribute	Value
-Record	14-3 (Regular Season)
-Seed	#2 AFC
-Head Coach	Mike Vrabel (1st year)
-Key Players	Drake Maye (QB - NFL Most Improved), Stefon Diggs (WR)
-Playstyle	Efficient offense, opportunistic defense
-Primary Colors	Navy Blue (#002244), Red (#C60C30), Silver (#B0B7BC)
-Super Bowl History	11 appearances, 6 wins (most in NFL history)
-Historical Context
-Previous Meeting: Super Bowl XLIX (Patriots 28, Seahawks 24)
-Narrative: Rematch 11 years later; Seahawks seeking redemption
-Venue: Levi's Stadium, Santa Clara, CA
-4. Fan Prediction Categories
-4.1 Tier Structure
-Free Tier ($0)
-Access to basic predictions only:
+**URL Structure:**
+| URL | Access | Purpose |
+|-----|--------|---------|
+| `/` | Public | Fan home, current matchup, how it works |
+| `/predict` | Logged-in users | Submit predictions |
+| `/leaderboard` | Public | XP rankings |
+| `/profile` | Logged-in users | User stats, history |
+| `/admin` | ⚠️ **Demo: Anyone** | Dashboard (secret URL, not linked anywhere) |
+| `/admin/*` | ⚠️ **Demo: Anyone** | Matchups, scripts, videos, users |
 
-Opening possession predictions
-Final outcome (winner only)
-1 script submission per matchup
-Member Tier ($4.99/mo)
-Unlocks intermediate predictions:
+---
 
-All Free tier predictions
-Scoring pace predictions
-Momentum swing predictions
-3 script submissions per matchup
-Priority voting weight (1.5x)
-Superfan Tier ($14.99/mo)
-Full access + premium features:
+# 3. Demo Matchup: Super Bowl LX
 
-All predictions unlocked
-Fantasy stadium selection
-Power-up timing control
-Unlimited script submissions
-Captain's Vote weight (3x)
-Early access to generated videos
-4.2 How XP Multipliers Work
-Core Concept: Higher risk = higher reward. Multipliers work like odds — rarer outcomes pay more XP if you're correct.
+## Team Profiles
 
-Calculation
+### Seattle Seahawks (NFC Champions)
+| Attribute | Value |
+|-----------|-------|
+| **Record** | 14-3 (Regular Season) |
+| **Seed** | #1 NFC |
+| **Head Coach** | Mike Macdonald (2nd year) |
+| **Key Players** | Sam Darnold (QB), Devon Witherspoon (CB), Jaxon Smith-Njigba (WR) |
+| **Playstyle** | Balanced attack, Legion of Boom 2.0 defense |
+| **Primary Colors** | College Navy (#002244), Action Green (#69BE28) |
+| **Super Bowl History** | 3 appearances, 1 win (XLVIII) |
+
+### New England Patriots (AFC Champions)
+| Attribute | Value |
+|-----------|-------|
+| **Record** | 14-3 (Regular Season) |
+| **Seed** | #2 AFC |
+| **Head Coach** | Mike Vrabel (1st year) |
+| **Key Players** | Drake Maye (QB - NFL Most Improved), Stefon Diggs (WR) |
+| **Playstyle** | Efficient offense, opportunistic defense |
+| **Primary Colors** | Navy Blue (#002244), Red (#C60C30), Silver (#B0B7BC) |
+| **Super Bowl History** | 11 appearances, 6 wins (most in NFL history) |
+
+### Historical Context
+- **Previous Meeting:** Super Bowl XLIX (Patriots 28, Seahawks 24)
+- **Narrative:** Rematch 11 years later; Seahawks seeking redemption
+- **Venue:** Levi's Stadium, Santa Clara, CA
+
+---
+
+# 4. Fan Prediction Categories
+
+## 4.1 Tier Structure
+
+> ⚠️ **MVP NOTE:** Subscription tiers are **placeholder functionality only** for the demo. No payment processing (Stripe, etc.) is wired up. Users can be manually upgraded via the admin panel or database.
+
+### Free Tier ($0)
+Access to core prediction features:
+- All basic predictions (opening possession, first score, final outcome)
+- 1x voting weight
+- XP earning and leaderboard participation
+- View generated trailers
+
+### Superfan Tier ($1.99/mo) — *Placeholder*
+Premium features for dedicated fans:
+- **All predictions unlocked** (including power-ups and stadium selection)
+- **3x voting weight** — your voice matters more in script generation
+- **Early access** to generated videos (24 hours before public release)
+- **Exclusive badge** displayed on leaderboard
+- **Points redemption** — cash out XP for team offers (see 4.1.1)
+
+> 💡 **Future:** Payment integration will be added in Phase 3. For demo, tier upgrades are manual.
+
+---
+
+## 4.1.1 Points Redemption (Placeholder)
+
+> ⚠️ **MVP NOTE:** This is placeholder UI only. No real offers or redemptions are processed.
+
+Fans can accumulate XP through correct predictions and eventually redeem points for exclusive offers from their favorite teams.
+
+### How It Works (Planned)
+1. **Earn XP** — Make predictions, get them right, climb the leaderboard
+2. **Browse Offers** — View available rewards from NFL teams
+3. **Redeem** — Exchange XP for discounts, merchandise, experiences
+
+### Placeholder Offers (Demo Data)
+| Team | Offer | XP Cost | Status |
+|------|-------|---------|--------|
+| Seattle Seahawks | 20% off team store | 5,000 XP | 🔒 Coming Soon |
+| Seattle Seahawks | Signed mini-helmet raffle entry | 10,000 XP | 🔒 Coming Soon |
+| New England Patriots | Free shipping on orders $50+ | 3,000 XP | 🔒 Coming Soon |
+| New England Patriots | VIP stadium tour raffle entry | 15,000 XP | 🔒 Coming Soon |
+| League-wide | $5 NFL Shop gift card | 8,000 XP | 🔒 Coming Soon |
+
+### UI Implementation
+- **Profile Page:** "Rewards" tab showing XP balance and available offers
+- **Offer Cards:** Team logo, offer description, XP cost, "Redeem" button (disabled with "Coming Soon" label)
+- **Redemption History:** Empty state with "Your redeemed offers will appear here"
+
+### Database Schema (Placeholder)
+
+```sql
+-- Team offers table (for future use)
+CREATE TABLE team_offers (
+  id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
+  team_name TEXT NOT NULL,
+  offer_title TEXT NOT NULL,
+  offer_description TEXT,
+  xp_cost INTEGER NOT NULL,
+  is_active BOOLEAN DEFAULT false,  -- false for MVP
+  created_at TIMESTAMPTZ DEFAULT NOW()
+);
+
+-- User redemptions table (for future use)
+CREATE TABLE user_redemptions (
+  id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
+  user_id UUID REFERENCES users(id),
+  offer_id UUID REFERENCES team_offers(id),
+  xp_spent INTEGER NOT NULL,
+  redeemed_at TIMESTAMPTZ DEFAULT NOW(),
+  status TEXT DEFAULT 'pending' CHECK (status IN ('pending', 'fulfilled', 'expired'))
+);
+```
+
+> 💡 **Future Integration:** Partner with NFL teams to provide real offers. Revenue share model TBD.
+
+---
+
+## 4.2 How XP Multipliers Work
+
+**Core Concept:** Higher risk = higher reward. Multipliers work like odds — rarer outcomes pay more XP if you're correct.
+
+### Calculation
+
+```
 XP Earned = Base XP (100) × Multiplier    (if prediction correct)
 XP Earned = 0                              (if prediction wrong)
-Example Scenarios
-Prediction	Your Pick	Multiplier	Actual Outcome	XP Earned
-Who scores first?	Patriots	2.0x	Patriots score first ✅	100 × 2.0 = 200 XP
-Who scores first?	Patriots	2.0x	Seahawks score first ❌	0 XP
-First score method?	Safety	8.0x	Safety happens ✅	100 × 8.0 = 800 XP
-Overtime?	Yes	5.0x	Game goes to OT ✅	100 × 5.0 = 500 XP
-Multiplier Tiers
-Multiplier Range	Risk Level	Example Predictions
-1.2x - 1.8x	Safe bet	"Game ends in regulation", "Favorite wins"
-2.0x - 3.0x	Coin flip	"Who scores first?", "Victory margin"
-3.5x - 5.0x	Risky	"Overtime happens", "4+ consecutive scores"
-6.0x - 12.0x	Long shot	"Safety on first score", "Defensive TD"
-Why This System Works
-Engagement: Fans are incentivized to make bold picks, not just safe ones
-Skill Rewards: Savvy fans who spot undervalued outcomes earn more
-Drama: Creates rooting interest even for unlikely scenarios
-Replayability: Different strategy each week (go safe vs. swing for the fences)
-XP Leaderboards
-Leaderboard	Reset Frequency	Rewards
-Weekly	Every matchup	Badge + bonus card pack
-Monthly	End of month	Exclusive cosmetics
-Season	End of NFL season	"Prophet" title + premium rewards
-4.3 Prediction Categories
-Category 01: Opening Possession
-Question: Who scores first?
+```
 
-Option	XP Multiplier
-Seattle Seahawks	1.8x
-New England Patriots	2.0x
-Category 02: First Score Method
-Question: How is the first score achieved?
+### Example Scenarios
 
-Option	XP Multiplier
-Seahawks Touchdown	2.0x
-Seahawks Field Goal	2.5x
-Patriots Touchdown	2.2x
-Patriots Field Goal	2.7x
-Safety	12.0x
-Category 03: First Touchdown Scorer (Position)
-Question: What position scores the first TD?
+| Prediction | Your Pick | Multiplier | Actual Outcome | XP Earned |
+|------------|-----------|------------|----------------|-----------|
+| Who scores first? | Patriots | 2.0x | Patriots score first ✅ | 100 × 2.0 = **200 XP** |
+| Who scores first? | Patriots | 2.0x | Seahawks score first ❌ | **0 XP** |
+| First score method? | Safety | 8.0x | Safety happens ✅ | 100 × 8.0 = **800 XP** |
+| Overtime? | Yes | 5.0x | Game goes to OT ✅ | 100 × 5.0 = **500 XP** |
 
-Option	XP Multiplier
-Wide Receiver	1.6x
-Running Back	2.0x
-Tight End	2.8x
-Quarterback (rush)	5.0x
-Defensive/Special Teams	8.0x
-Category 04: Scoring Pace
-Question: Total combined points?
+### Multiplier Tiers
 
-Option	XP Multiplier
-Under 35 points	2.3x
-35-50 points	1.5x
-Over 50 points	2.8x
-Category 05: Range Game — First Three-Pointer (Field Goal)
-Question: Who hits the first field goal?
+| Multiplier Range | Risk Level | Example Predictions |
+|------------------|------------|---------------------|
+| **1.2x - 1.8x** | Safe bet | "Game ends in regulation", "Favorite wins" |
+| **2.0x - 3.0x** | Coin flip | "Who scores first?", "Victory margin" |
+| **3.5x - 5.0x** | Risky | "Overtime happens", "4+ consecutive scores" |
+| **6.0x - 12.0x** | Long shot | "Safety on first score", "Defensive TD" |
 
-Option	XP Multiplier
-Seattle Seahawks	1.6x
-New England Patriots	2.2x
-No field goals made	3.5x
-Category 06: Highlight Reel — Most Consecutive Scores
-🔒 Superfan Only Question: Longest scoring streak by one team?
+### Why This System Works
 
-Option	XP Multiplier
-2 in a row	2.0x
-3 in a row	3.0x
-4+ in a row	5.0x
-Category 07: Power-Up Selection — Seahawks
-🔒 Superfan Only Question: Which superpower does Seattle unleash?
+1. **Engagement:** Fans are incentivized to make bold picks, not just safe ones
+2. **Skill Rewards:** Savvy fans who spot undervalued outcomes earn more
+3. **Drama:** Creates rooting interest even for unlikely scenarios
+4. **Replayability:** Different strategy each week (go safe vs. swing for the fences)
 
-Option	XP Multiplier
-⚡ SUPER SPEED — One player moves 2x faster for a play	2.0x
-🛡️ FORCE FIELD — Block any one tackle attempt	2.5x
-🔥 LASER ARM — QB throws cannot be intercepted for one drive	3.0x
-Category 08: Power-Up Selection — Patriots
-🔒 Superfan Only Question: Which superpower does New England unleash?
+### XP Leaderboards
 
-Option	XP Multiplier
-⚡ SUPER SPEED — One player moves 2x faster for a play	2.0x
-🧲 MAGNET HANDS — Next catch attempt cannot be dropped	2.5x
-👁️ X-RAY VISION — Defense reads the play perfectly, guaranteed sack or INT	3.5x
-Category 09: Power-Up Timing
-🔒 Superfan Only Question: When does the superpower activate?
+| Leaderboard | Reset Frequency | Rewards |
+|-------------|-----------------|---------|
+| Weekly | Every matchup | Badge + bonus card pack |
+| Monthly | End of month | Exclusive cosmetics |
+| Season | End of NFL season | "Prophet" title + premium rewards |
 
-Option	XP Multiplier
-🎬 OPENING DRIVE — Start strong, set the tone	1.5x
-⏰ HALFTIME HEROICS — Final 2 minutes of 2nd quarter	2.5x
-🏆 CLUTCH TIME — 4th quarter only	3.0x
-Category 10: Final Outcome
-Question: Who wins Super Bowl LX?
+---
 
-Option	XP Multiplier
-Seattle Seahawks	2.1x
-New England Patriots	1.9x
-Category 11: Victory Margin
-Question: Final point differential?
+## 4.3 Prediction Categories
 
-Option	XP Multiplier
-1-7 points (one score)	2.0x
-8-14 points (two scores)	1.8x
-15+ points (blowout)	2.5x
-Category 12: Overtime
-Question: Does the game go to OT?
+### Category 01: Opening Possession
+**Question:** Who scores first?
+| Option | XP Multiplier |
+|--------|---------------|
+| Seattle Seahawks | 1.8x |
+| New England Patriots | 2.0x |
 
-Option	XP Multiplier
-No — ends in regulation	1.2x
-Yes — overtime required	5.0x
-4.4 Stadium Selection (Superfan Tier)
+### Category 02: First Score Method
+**Question:** How is the first score achieved?
+| Option | XP Multiplier |
+|--------|---------------|
+| Seahawks Touchdown | 2.0x |
+| Seahawks Field Goal | 2.5x |
+| Patriots Touchdown | 2.2x |
+| Patriots Field Goal | 2.7x |
+| Safety | 12.0x |
+
+### Category 03: First Touchdown Scorer (Position)
+**Question:** What position scores the first TD?
+| Option | XP Multiplier |
+|--------|---------------|
+| Wide Receiver | 1.6x |
+| Running Back | 2.0x |
+| Tight End | 2.8x |
+| Quarterback (rush) | 5.0x |
+| Defensive/Special Teams | 8.0x |
+
+### Category 04: Scoring Pace
+**Question:** Total combined points?
+| Option | XP Multiplier |
+|--------|---------------|
+| Under 35 points | 2.3x |
+| 35-50 points | 1.5x |
+| Over 50 points | 2.8x |
+
+### Category 05: Range Game — First Three-Pointer (Field Goal)
+**Question:** Who hits the first field goal?
+| Option | XP Multiplier |
+|--------|---------------|
+| Seattle Seahawks | 1.6x |
+| New England Patriots | 2.2x |
+| No field goals made | 3.5x |
+
+### Category 06: Highlight Reel — Most Consecutive Scores
+**🔒 Superfan Only** *(Placeholder — unlockable via admin)*
+**Question:** Longest scoring streak by one team?
+| Option | XP Multiplier |
+|--------|---------------|
+| 2 in a row | 2.0x |
+| 3 in a row | 3.0x |
+| 4+ in a row | 5.0x |
+
+### Category 07: Power-Up Selection — Seahawks
+**🔒 Superfan Only** *(Placeholder — unlockable via admin)*
+**Question:** Which superpower does Seattle unleash?
+| Option | XP Multiplier |
+|--------|---------------|
+| ⚡ **SUPER SPEED** — One player moves 2x faster for a play | 2.0x |
+| 🛡️ **FORCE FIELD** — Block any one tackle attempt | 2.5x |
+| 🔥 **LASER ARM** — QB throws cannot be intercepted for one drive | 3.0x |
+
+### Category 08: Power-Up Selection — Patriots
+**🔒 Superfan Only** *(Placeholder — unlockable via admin)*
+**Question:** Which superpower does New England unleash?
+| Option | XP Multiplier |
+|--------|---------------|
+| ⚡ **SUPER SPEED** — One player moves 2x faster for a play | 2.0x |
+| 🧲 **MAGNET HANDS** — Next catch attempt cannot be dropped | 2.5x |
+| 👁️ **X-RAY VISION** — Defense reads the play perfectly, guaranteed sack or INT | 3.5x |
+
+### Category 09: Power-Up Timing
+**🔒 Superfan Only** *(Placeholder — unlockable via admin)*
+**Question:** When does the superpower activate?
+| Option | XP Multiplier |
+|--------|---------------|
+| 🎬 **OPENING DRIVE** — Start strong, set the tone | 1.5x |
+| ⏰ **HALFTIME HEROICS** — Final 2 minutes of 2nd quarter | 2.5x |
+| 🏆 **CLUTCH TIME** — 4th quarter only | 3.0x |
+
+### Category 10: Final Outcome
+**Question:** Who wins Super Bowl LX?
+| Option | XP Multiplier |
+|--------|---------------|
+| Seattle Seahawks | 2.1x |
+| New England Patriots | 1.9x |
+
+### Category 11: Victory Margin
+**Question:** Final point differential?
+| Option | XP Multiplier |
+|--------|---------------|
+| 1-7 points (one score) | 2.0x |
+| 8-14 points (two scores) | 1.8x |
+| 15+ points (blowout) | 2.5x |
+
+### Category 12: Overtime
+**Question:** Does the game go to OT?
+| Option | XP Multiplier |
+|--------|---------------|
+| No — ends in regulation | 1.2x |
+| Yes — overtime required | 5.0x |
+
+---
+
+## 4.4 Stadium Selection (Superfan Tier — Placeholder)
+
 Fans vote on fantastical stadium variants that affect visual style and gameplay modifiers:
 
-Classic Venues
-Stadium	Description	Visual Style	Gameplay Effect
-Levi's Stadium (Default)	Actual Super Bowl LX venue	Realistic, sunny California	Neutral baseline
-Frozen Tundra	Snow-covered Lambeau-style	Blizzard effects, breath vapor	+15% fumble chance
-Dome Cathedral	Indoor retractable roof	Perfect lighting, crowd roar	Pure skill matchup
-Fantasy Arenas (Superfan Exclusive)
-Stadium	Description	Visual Style	Gameplay Effect
-Neon Vegas Strip	Midnight game on the Strip	Cyberpunk, LED everything	"Showtime" bonus for big plays
-Space Station Gridiron	Orbital zero-G sections	Sci-fi, Earth backdrop	Altered physics on certain plays
-Ancient Colosseum	Roman ruins aesthetic	Gladiator anime style	"Crowd Roar" momentum swings
-Underwater Dome	Submerged glass arena	Deep blue, bioluminescent	Dreamlike slow-motion moments
-Mountain Summit	10,000 ft elevation peak	Thin air, epic vistas	Increased fatigue effects
-5. Power-Up System: Superpowers Unleashed
-Each team gets ONE superpower per game. Fans vote on which power AND when it activates. Think Avengers meets the NFL.
+### Classic Venues
+| Stadium | Description | Visual Style | Gameplay Effect |
+|---------|-------------|--------------|-----------------|
+| **Levi's Stadium (Default)** | Actual Super Bowl LX venue | Realistic, sunny California | Neutral baseline |
+| **Frozen Tundra** | Snow-covered Lambeau-style | Blizzard effects, breath vapor | +15% fumble chance |
+| **Dome Cathedral** | Indoor retractable roof | Perfect lighting, crowd roar | Pure skill matchup |
 
-Available Superpowers
-⚡ SUPER SPEED
-"The world slows down. One player becomes a blur."
+### Fantasy Arenas (Superfan Exclusive)
+| Stadium | Description | Visual Style | Gameplay Effect |
+|---------|-------------|--------------|-----------------|
+| **Neon Vegas Strip** | Midnight game on the Strip | Cyberpunk, LED everything | "Showtime" bonus for big plays |
+| **Space Station Gridiron** | Orbital zero-G sections | Sci-fi, Earth backdrop | Altered physics on certain plays |
+| **Ancient Colosseum** | Roman ruins aesthetic | Gladiator anime style | "Crowd Roar" momentum swings |
+| **Underwater Dome** | Submerged glass arena | Deep blue, bioluminescent | Dreamlike slow-motion moments |
+| **Mountain Summit** | 10,000 ft elevation peak | Thin air, epic vistas | Increased fatigue effects |
 
-Effect: Chosen player moves at 2x speed for one play
-Visual: Lightning trails, slow-motion everyone else, sonic boom effects
-Best For: Breakaway runs, deep routes, kick returns
+---
 
-🛡️ FORCE FIELD
-"An invisible wall. Nothing gets through."
+# 5. Power-Up System: Superpowers Unleashed
 
-Effect: Blocks any ONE tackle attempt completely
-Visual: Blue energy shield ripples on impact, tackler bounces off
-Best For: Goal line stands, breaking through the pile
+Each team gets **ONE superpower per game**. Fans vote on which power AND when it activates. Think Avengers meets the NFL.
 
-🔥 LASER ARM
-"The ball cuts through the air like a missile."
+## Available Superpowers
 
-Effect: QB throws cannot be intercepted for one full drive
-Visual: Red tracer on the ball, heat distortion, perfect spirals
-Best For: Aggressive downfield passing, comeback drives
+### ⚡ SUPER SPEED
+*"The world slows down. One player becomes a blur."*
 
-🧲 MAGNET HANDS
-"The ball finds him. Always."
+**Effect:** Chosen player moves at 2x speed for one play  
+**Visual:** Lightning trails, slow-motion everyone else, sonic boom effects  
+**Best For:** Breakaway runs, deep routes, kick returns
 
-Effect: Next catch attempt is 100% successful, no drops possible
-Visual: Gold magnetic energy between hands and ball
-Best For: Clutch 3rd down conversions, contested catches
+---
 
-👁️ X-RAY VISION
-"They see everything before it happens."
+### 🛡️ FORCE FIELD
+*"An invisible wall. Nothing gets through."*
 
-Effect: Defense perfectly reads the next play — guaranteed sack OR interception
-Visual: Freeze frame with glowing player outlines, "prediction lines" showing the play
-Best For: Stopping momentum, creating turnovers
+**Effect:** Blocks any ONE tackle attempt completely  
+**Visual:** Blue energy shield ripples on impact, tackler bounces off  
+**Best For:** Goal line stands, breaking through the pile
 
-🌪️ UNSTOPPABLE FORCE
-"He cannot be brought down."
+---
 
-Effect: Ball carrier breaks through ALL tackles for one play
-Visual: Orange energy aura, defenders flying backward on impact
-Best For: Short yardage, touchdown pushes
+### 🔥 LASER ARM
+*"The ball cuts through the air like a missile."*
 
-Activation Timing
+**Effect:** QB throws cannot be intercepted for one full drive  
+**Visual:** Red tracer on the ball, heat distortion, perfect spirals  
+**Best For:** Aggressive downfield passing, comeback drives
+
+---
+
+### 🧲 MAGNET HANDS
+*"The ball finds him. Always."*
+
+**Effect:** Next catch attempt is 100% successful, no drops possible  
+**Visual:** Gold magnetic energy between hands and ball  
+**Best For:** Clutch 3rd down conversions, contested catches
+
+---
+
+### 👁️ X-RAY VISION
+*"They see everything before it happens."*
+
+**Effect:** Defense perfectly reads the next play — guaranteed sack OR interception  
+**Visual:** Freeze frame with glowing player outlines, "prediction lines" showing the play  
+**Best For:** Stopping momentum, creating turnovers
+
+---
+
+### 🌪️ UNSTOPPABLE FORCE
+*"He cannot be brought down."*
+
+**Effect:** Ball carrier breaks through ALL tackles for one play  
+**Visual:** Orange energy aura, defenders flying backward on impact  
+**Best For:** Short yardage, touchdown pushes
+
+---
+
+## Activation Timing
+
 Fans also vote on WHEN the superpower triggers:
 
-Timing	Description	Drama Level
-🎬 OPENING DRIVE	Use it immediately, set the tone	⭐⭐
-⏰ HALFTIME HEROICS	Final 2 minutes before the half	⭐⭐⭐
-🏆 CLUTCH TIME	4th quarter only, maximum stakes	⭐⭐⭐⭐⭐
-Visual Treatment in Video
+| Timing | Description | Drama Level |
+|--------|-------------|-------------|
+| 🎬 **OPENING DRIVE** | Use it immediately, set the tone | ⭐⭐ |
+| ⏰ **HALFTIME HEROICS** | Final 2 minutes before the half | ⭐⭐⭐ |
+| 🏆 **CLUTCH TIME** | 4th quarter only, maximum stakes | ⭐⭐⭐⭐⭐ |
+
+---
+
+## Visual Treatment in Video
+
 When a superpower activates:
+1. **FREEZE FRAME** — Action stops, dramatic music sting
+2. **POWER REVEAL** — Icon appears on screen with team colors
+3. **ACTIVATION** — Anime-style transformation sequence (1-2 seconds)
+4. **EXECUTION** — The play unfolds with enhanced visual effects
+5. **AFTERMATH** — Slow-motion replay of the powered moment
 
-FREEZE FRAME — Action stops, dramatic music sting
-POWER REVEAL — Icon appears on screen with team colors
-ACTIVATION — Anime-style transformation sequence (1-2 seconds)
-EXECUTION — The play unfolds with enhanced visual effects
-AFTERMATH — Slow-motion replay of the powered moment
-6. Technical Workflow Specification
-6.1 System Components
-Component 1: Fan Web Application (Main Site)
-Technology Stack:
+---
 
-Frontend: Vue.js 3 + TypeScript + Tailwind CSS
-State Management: Pinia
-Deployment: Vercel (static + functions)
-Fan-Facing Routes:
+# 6. Technical Workflow Specification
 
+## 6.1 System Components
+
+### Component 1: Fan Web Application (Main Site)
+**Technology Stack:**
+- Frontend: **Vue.js 3** + TypeScript + **Tailwind CSS**
+- State Management: Pinia
+- Deployment: Vercel (static + functions)
+
+**Fan-Facing Routes:**
+```
 /                    # Home — current matchup, hero, how it works
 /predict             # Prediction builder (requires login)
 /leaderboard         # XP rankings
 /profile             # User stats, prediction history
+/profile/rewards     # Points redemption (placeholder offers)
 /login               # Auth modal (can also be overlay)
 /register            # Auth modal
-Key Features:
+```
 
-Responsive prediction interface
-Real-time submission counters
-Tiered access control (Free/Member/Superfan)
-XP tracking dashboard
-Component 2: Admin Dashboard (/admin)
-Access: Secret URL only (not linked from main site)
+**Key Features:**
+- **Mobile-first responsive design** — optimized for phones, works great on tablets and desktop
+- **Extremely easy to use** — minimal taps to submit predictions, clear visual hierarchy
+- Real-time submission counters
+- Tiered access control (Free/Superfan only for MVP)
+- XP tracking dashboard
 
-Admin-Only Routes:
+### Component 2: Admin Dashboard (/admin)
+**Access:** Secret URL only (not linked from main site)
 
+**Admin-Only Routes:**
+```
 /admin               # Dashboard overview
 /admin/matchups      # Create/edit/close matchups
 /admin/predictions   # View all submissions, vote distributions
 /admin/scripts       # Review generated JSON, trigger renders
 /admin/videos        # Preview trailers, manage uploads
 /admin/users         # User management, tier overrides
-Demo Mode Protection:
+```
 
-Not linked from main navigation (security through obscurity)
-Access via direct URL: /admin
-No authentication required for demo
-TODO (Production): Add is_admin flag and proper auth
-Component 3: Vercel Functions (Serverless Backend)
+**Demo Mode Protection:**
+- Not linked from main navigation (security through obscurity)
+- Access via direct URL: `/admin`
+- No authentication required for demo
+- TODO (Production): Add `is_admin` flag and proper auth
+
+### Component 3: Vercel Functions (Serverless Backend)
 All API routes run as Vercel Functions, connecting to Supabase:
 
+```
 /api/
 ├── auth/
 │   ├── register.ts      # Create account (email/password/username)
@@ -365,8 +518,10 @@ All API routes run as Vercel Functions, connecting to Supabase:
 │   └── users.ts         # User management
 └── webhooks/
     └── fal-complete.ts      # Handle render completion
+```
 Supabase client is initialized in Vercel Functions, not exposed to frontend:
 
+```typescript
 // /api/_lib/supabase.ts
 import { createClient } from '@supabase/supabase-js';
 
@@ -374,15 +529,18 @@ export const supabase = createClient(
   process.env.SUPABASE_URL!,
   process.env.SUPABASE_SERVICE_KEY! // Server-side only
 );
-Database Schema:
+```
 
+**Database Schema:**
+
+```sql
 -- Users table (with username + password hash)
 CREATE TABLE users (
   id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
   email TEXT UNIQUE NOT NULL,
   username TEXT UNIQUE NOT NULL,
   password_hash TEXT NOT NULL,
-  tier TEXT DEFAULT 'free' CHECK (tier IN ('free', 'member', 'superfan')),
+  tier TEXT DEFAULT 'free' CHECK (tier IN ('free', 'superfan')),  -- Only 2 tiers for MVP
   xp_total INTEGER DEFAULT 0,
   created_at TIMESTAMPTZ DEFAULT NOW()
 );
@@ -451,8 +609,15 @@ CREATE TABLE generated_scripts (
   video_url_trailer TEXT,
   generated_at TIMESTAMPTZ DEFAULT NOW()
 );
-6.2 User Authentication (Email/Password/Username)
-Registration Endpoint
+```
+
+---
+
+## 6.2 User Authentication (Email/Password/Username)
+
+### Registration Endpoint
+
+```typescript
 // /api/auth/register.ts
 import type { VercelRequest, VercelResponse } from '@vercel/node';
 import { supabase } from '../_lib/supabase';
@@ -524,7 +689,11 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
     return res.status(500).json({ error: 'Registration failed' });
   }
 }
-Login Endpoint
+```
+
+### Login Endpoint
+
+```typescript
 // /api/auth/login.ts
 import type { VercelRequest, VercelResponse } from '@vercel/node';
 import { supabase } from '../_lib/supabase';
@@ -579,7 +748,11 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
     return res.status(500).json({ error: 'Login failed' });
   }
 }
-Get Current User Endpoint
+```
+
+### Get Current User Endpoint
+
+```typescript
 // /api/auth/me.ts
 import type { VercelRequest, VercelResponse } from '@vercel/node';
 import { supabase } from '../_lib/supabase';
@@ -626,7 +799,11 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
     return res.status(500).json({ error: 'Auth check failed' });
   }
 }
-Logout Endpoint
+```
+
+### Logout Endpoint
+
+```typescript
 // /api/auth/logout.ts
 import type { VercelRequest, VercelResponse } from '@vercel/node';
 import { supabase } from '../_lib/supabase';
@@ -650,7 +827,11 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
 
   return res.status(200).json({ message: 'Logged out' });
 }
-Auth Middleware Helper
+```
+
+### Auth Middleware Helper
+
+```typescript
 // /api/_lib/auth.ts
 import { VercelRequest } from '@vercel/node';
 import { supabase } from './supabase';
@@ -690,9 +871,14 @@ export async function getAuthUser(req: VercelRequest): Promise<AuthUser | null> 
 }
 
 export function getTierWeight(tier: string): number {
-  return { free: 1.0, member: 1.5, superfan: 3.0 }[tier] || 1.0;
+  // Only 2 tiers for MVP: free (1x) and superfan (3x)
+  return { free: 1.0, superfan: 3.0 }[tier] || 1.0;
 }
-Example Admin Endpoint (Demo Mode - No Auth)
+```
+
+### Example Admin Endpoint (Demo Mode - No Auth)
+
+```typescript
 // /api/admin/generate-script.ts
 import type { VercelRequest, VercelResponse } from '@vercel/node';
 import { supabase } from '../_lib/supabase';
@@ -711,8 +897,15 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
   
   return res.status(200).json({ success: true });
 }
-6.3 Vue.js Frontend Auth Integration
-Auth Store (Pinia)
+```
+
+---
+
+## 6.3 Vue.js Frontend Auth Integration
+
+### Auth Store (Pinia)
+
+```typescript
 // stores/auth.ts
 import { defineStore } from 'pinia';
 import { ref, computed } from 'vue';
@@ -721,7 +914,7 @@ interface User {
   id: string;
   email: string;
   username: string;
-  tier: 'free' | 'member' | 'superfan';
+  tier: 'free' | 'superfan';  // Only 2 tiers for MVP
   xp_total: number;
 }
 
@@ -730,7 +923,7 @@ export const useAuthStore = defineStore('auth', () => {
   const loading = ref(true);
 
   const isLoggedIn = computed(() => !!user.value);
-  const isMember = computed(() => user.value?.tier === 'member' || user.value?.tier === 'superfan');
+  // Only 2 tiers for MVP: free and superfan
   const isSuperfan = computed(() => user.value?.tier === 'superfan');
 
   async function checkAuth() {
@@ -783,9 +976,13 @@ export const useAuthStore = defineStore('auth', () => {
     user.value = null;
   }
 
-  return { user, loading, isLoggedIn, isMember, isSuperfan, checkAuth, register, login, logout };
+  return { user, loading, isLoggedIn, isSuperfan, checkAuth, register, login, logout };
 });
-Login/Register Component
+```
+
+### Login/Register Component
+
+```vue
 <!-- components/AuthModal.vue -->
 <template>
   <div class="fixed inset-0 bg-black/60 flex items-center justify-center z-50">
@@ -890,7 +1087,11 @@ async function handleSubmit() {
   }
 }
 </script>
-Vue Router (Demo Mode)
+```
+
+### Vue Router (Demo Mode)
+
+```typescript
 // router/index.ts
 import { createRouter, createWebHistory } from 'vue-router';
 import { useAuthStore } from '@/stores/auth';
@@ -916,6 +1117,7 @@ const router = createRouter({
     { path: '/predict', name: 'predict', component: Predict, meta: { requiresAuth: true } },
     { path: '/leaderboard', name: 'leaderboard', component: Leaderboard },
     { path: '/profile', name: 'profile', component: Profile, meta: { requiresAuth: true } },
+    { path: '/profile/rewards', name: 'rewards', component: () => import('@/views/Rewards.vue'), meta: { requiresAuth: true } },
 
     // ========== ADMIN ROUTES (⚠️ DEMO MODE: No auth required) ==========
     {
@@ -958,7 +1160,11 @@ router.beforeEach(async (to, from, next) => {
 });
 
 export default router;
-Admin Layout Component
+```
+
+### Admin Layout Component
+
+```vue
 <!-- views/admin/Dashboard.vue -->
 <template>
   <div class="min-h-screen bg-slate-900 flex">
@@ -1018,18 +1224,28 @@ Admin Layout Component
     </main>
   </div>
 </template>
-6.4 Script Generation (Admin Workflow)
-Trigger: Admin initiates after prediction window closes
+```
 
-Process:
+---
 
-Query all predictions for matchup
-Calculate weighted outcomes per category
-Send to Gemini 3 Flash for narrative script generation
-Output structured JSON with timestamps
-Store script in database
-6.5 Gemini 3 Flash Script Generation
-API Integration
+## 6.4 Script Generation (Admin Workflow)
+
+**Trigger:** Admin initiates after prediction window closes
+
+**Process:**
+1. Query all predictions for matchup
+2. Calculate weighted outcomes per category
+3. Send to Gemini 3 Flash for narrative script generation
+4. Output structured JSON with timestamps
+5. Store script in database
+
+---
+
+## 6.5 Gemini 3 Flash Script Generation
+
+### API Integration
+
+```javascript
 // scripts/generate-script.js
 import { GoogleGenerativeAI } from "@google/generative-ai";
 import { createClient } from "@supabase/supabase-js";
@@ -1087,7 +1303,8 @@ async function aggregatePredictions(matchupId) {
 }
 
 function getTierMultiplier(tier) {
-  return { free: 1.0, member: 1.5, superfan: 3.0 }[tier] || 1.0;
+  // Only 2 tiers for MVP: free (1x) and superfan (3x)
+  return { free: 1.0, superfan: 3.0 }[tier] || 1.0;
 }
 
 async function generateScript(matchupId) {
@@ -1222,8 +1439,15 @@ Return ONLY valid JSON with both scripts in an array: [fullScript, trailerScript
 }
 
 export { generateScript, aggregatePredictions };
-6.6 Video Generation (fal.ai Veo 3.1)
-API Integration
+```
+
+---
+
+## 6.6 Video Generation (fal.ai Veo 3.1)
+
+### API Integration
+
+```javascript
 // scripts/render-video.js
 import { fal } from "@fal-ai/client";
 import { createClient } from "@supabase/supabase-js";
@@ -1404,7 +1628,13 @@ async function concatenateVideos(sceneVideos, type) {
 }
 
 export { renderTrailerOnly, renderFullEpisode, renderScene };
-6.7 Sample Generated Script JSON
+```
+
+---
+
+## 6.7 Sample Generated Script JSON
+
+```json
 {
   "type": "full",
   "duration_seconds": 120,
@@ -1559,7 +1789,13 @@ export { renderTrailerOnly, renderFullEpisode, renderScene };
     }
   ]
 }
-6.8 Trailer Script JSON
+```
+
+---
+
+## 6.8 Trailer Script JSON
+
+```json
 {
   "type": "trailer",
   "duration_seconds": 10,
@@ -1626,36 +1862,51 @@ export { renderTrailerOnly, renderFullEpisode, renderScene };
   ],
   "key_moments": []
 }
-7. Admin Workflow
-7.1 Step-by-Step Process
-Phase 1: Prediction Collection (Days 1-5)
-Admin creates matchup in Supabase
-Prediction window opens on web app
-Fans submit predictions (weighted by tier)
-Real-time counters update on frontend
-Admin monitors submission volume
-Phase 2: Script Generation (Day 6)
-Admin closes prediction window
-Admin triggers generateScript(matchupId) function
-Gemini 3 Flash aggregates weighted predictions
-AI generates BOTH full (2-min) + trailer (10-sec) scripts as JSON
-Scripts saved to Supabase
-Phase 3: Trailer Rendering (Day 6)
-Admin reviews generated script JSON
-Admin triggers renderTrailerOnly(matchupId) function
-Only the 10-second trailer is rendered via Veo 3.1 (~$3 cost)
-Full 2-minute script is stored but NOT rendered (saves ~$36)
-Trailer uploaded to CDN
-Phase 4: Trailer Distribution (Day 7)
-Trailer premieres on social (TikTok, Instagram, YouTube Shorts)
-Trailer drives engagement and builds anticipation
-Gauge audience interest before committing to full render
-Phase 5: Full Episode Render (Optional)
-If trailer performs well, admin triggers renderFullEpisode(matchupId)
-Veo 3.1 renders all scenes from stored script (~$36 cost)
-Full video uploaded to YouTube
-XP rewards distributed to prediction winners
-7.2 Cost-Optimized Workflow
+```
+
+---
+
+# 7. Admin Workflow
+
+## 7.1 Step-by-Step Process
+
+### Phase 1: Prediction Collection (Days 1-5)
+1. Admin creates matchup in Supabase
+2. Prediction window opens on web app
+3. Fans submit predictions (weighted by tier)
+4. Real-time counters update on frontend
+5. Admin monitors submission volume
+
+### Phase 2: Script Generation (Day 6)
+1. Admin closes prediction window
+2. Admin triggers `generateScript(matchupId)` function
+3. **Gemini 3 Flash** aggregates weighted predictions
+4. AI generates **BOTH** full (2-min) + trailer (10-sec) scripts as JSON
+5. Scripts saved to Supabase
+
+### Phase 3: Trailer Rendering (Day 6)
+1. Admin reviews generated script JSON
+2. Admin triggers `renderTrailerOnly(matchupId)` function
+3. **Only the 10-second trailer is rendered** via Veo 3.1 (~$3 cost)
+4. Full 2-minute script is stored but NOT rendered (saves ~$36)
+5. Trailer uploaded to CDN
+
+### Phase 4: Trailer Distribution (Day 7)
+1. Trailer premieres on social (TikTok, Instagram, YouTube Shorts)
+2. Trailer drives engagement and builds anticipation
+3. Gauge audience interest before committing to full render
+
+### Phase 5: Full Episode Render (Optional)
+1. If trailer performs well, admin triggers `renderFullEpisode(matchupId)`
+2. Veo 3.1 renders all scenes from stored script (~$36 cost)
+3. Full video uploaded to YouTube
+4. XP rewards distributed to prediction winners
+
+---
+
+## 7.2 Cost-Optimized Workflow
+
+```
 ┌─────────────────────────────────────────────────────────────────┐
 │                    RENDER DECISION FLOW                         │
 ├─────────────────────────────────────────────────────────────────┤
@@ -1692,22 +1943,32 @@ XP rewards distributed to prediction winners
 │   • Full episode: ~$40 (script + trailer + full render)        │
 │                                                                 │
 └─────────────────────────────────────────────────────────────────┘
-7.3 Admin Dashboard (/admin)
-⚠️ DEMO MODE: Admin is accessible to anyone who knows the URL.
+```
 
-NOT linked from main navigation, footer, or any public page
-Access via direct URL: https://gridironscript.com/admin
-No authentication required for demo
-TODO (Production): Add is_admin flag and proper auth
-Admin Features
-Route	Purpose
-/admin	Dashboard overview — active matchup stats, render status
-/admin/matchups	Create, edit, open/close prediction windows
-/admin/predictions	Real-time vote distributions, tier breakdowns, CSV export
-/admin/scripts	Review generated JSON, trigger renderTrailerOnly() or renderFullEpisode()
-/admin/videos	Preview/QA trailers, manage YouTube uploads
-/admin/users	User management, tier overrides
-Render Controls (Scripts Page)
+---
+
+## 7.3 Admin Dashboard (/admin)
+
+> ⚠️ **DEMO MODE:** Admin is accessible to anyone who knows the URL.
+> - **NOT linked** from main navigation, footer, or any public page
+> - **Access via direct URL:** `https://gridironscript.com/admin`
+> - **No authentication required** for demo
+> - TODO (Production): Add `is_admin` flag and proper auth
+
+### Admin Features
+
+| Route | Purpose |
+|-------|---------|
+| `/admin` | Dashboard overview — active matchup stats, render status |
+| `/admin/matchups` | Create, edit, open/close prediction windows |
+| `/admin/predictions` | Real-time vote distributions, tier breakdowns, CSV export |
+| `/admin/scripts` | Review generated JSON, trigger `renderTrailerOnly()` or `renderFullEpisode()` |
+| `/admin/videos` | Preview/QA trailers, manage YouTube uploads |
+| `/admin/users` | User management, tier overrides |
+
+### Render Controls (Scripts Page)
+
+```
 ┌─────────────────────────────────────────────────────────┐
 │  🎬 Super Bowl LX — Script Ready                        │
 ├─────────────────────────────────────────────────────────┤
@@ -1724,62 +1985,151 @@ Render Controls (Scripts Page)
 │  📝 Preview Script JSON   📊 View Vote Breakdown       │
 │                                                         │
 └─────────────────────────────────────────────────────────┘
-8. Visual Style Guide
-8.1 Anime Aesthetic Requirements
-Character Design
-Helmets: Full coverage, dark/reflective visors, NO face visibility
-Body Type: Athletic, exaggerated proportions common in sports anime
-Motion: Speed lines, impact frames, dramatic poses
-Team Uniforms
-Seattle Seahawks
-Element	Color	Hex Code
-Primary	College Navy	#002244
-Secondary	Action Green	#69BE28
-Accent	Wolf Grey	#A5ACAF
-Helmet	Navy with Green stripe	—
-New England Patriots
-Element	Color	Hex Code
-Primary	Navy Blue	#002244
-Secondary	Red	#C60C30
-Accent	Silver	#B0B7BC
-Helmet	Silver with Red stripe	—
-Visual Effects
-Speed Lines: Radiating from fast-moving objects
-Impact Frames: Flash frames on big hits
-Slow Motion: Key moments rendered at reduced speed with motion blur
-Superpower Visual Effects
-Power	Visual Treatment
-⚡ SUPER SPEED	Lightning trails, slow-mo world, sonic boom rings
-🛡️ FORCE FIELD	Blue hexagonal energy shield, ripple on impact
-🔥 LASER ARM	Red tracer on ball, heat distortion, smoke trail
-🧲 MAGNET HANDS	Gold particle streams between hands and ball
-👁️ X-RAY VISION	Freeze frame, glowing player outlines, prediction lines
-🌪️ UNSTOPPABLE FORCE	Orange aura, defenders flying backward, ground crack
-9. Monetization & Tier Pricing
-Tier	Monthly Price	Annual Price	Features
-Free	$0	$0	Basic predictions, 1 submission, 1x voting weight
-Member	$4.99	$49.99/yr	Full predictions, 3 submissions, 1.5x voting weight, early VOD
-Superfan	$14.99	$149.99/yr	All features, unlimited submissions, 3x voting weight, stadium/power-up control, exclusive badge
-Additional Revenue Streams:
+```
 
-Digital collectibles (prediction moment NFTs)
-Sponsored power-ups (brand integration)
-Premium video content (director's cut, behind-the-scenes)
-Merchandise tie-ins
-10. Technical Requirements
-10.1 Technology Stack
-Layer	Technology	Notes
-Frontend	Vue.js 3 + TypeScript	Composition API, <script setup>
-Styling	Tailwind CSS	Utility-first, dark theme
-State	Pinia	Vue's official state management
-Backend	Vercel Functions	Serverless API routes
-Database	Supabase (PostgreSQL)	Accessed via Vercel Functions only
-Auth	Custom (bcrypt + sessions)	Email/password/username
-AI (Script)	Gemini 3 Flash	gemini-3-flash-preview
-AI (Video)	fal.ai Veo 3.1	Text-to-video rendering
-Hosting	Vercel	Frontend + Functions
-Storage	Cloudflare R2	Video file CDN
-10.2 Dependencies
+---
+
+# 8. Visual Style Guide
+
+## 8.1 Anime Aesthetic Requirements
+
+### Character Design
+- **Helmets:** Full coverage, dark/reflective visors, NO face visibility
+- **Body Type:** Athletic, exaggerated proportions common in sports anime
+- **Motion:** Speed lines, impact frames, dramatic poses
+
+### Team Uniforms
+
+#### Seattle Seahawks
+| Element | Color | Hex Code |
+|---------|-------|----------|
+| Primary | College Navy | #002244 |
+| Secondary | Action Green | #69BE28 |
+| Accent | Wolf Grey | #A5ACAF |
+| Helmet | Navy with Green stripe | — |
+
+#### New England Patriots
+| Element | Color | Hex Code |
+|---------|-------|----------|
+| Primary | Navy Blue | #002244 |
+| Secondary | Red | #C60C30 |
+| Accent | Silver | #B0B7BC |
+| Helmet | Silver with Red stripe | — |
+
+### Visual Effects
+- **Speed Lines:** Radiating from fast-moving objects
+- **Impact Frames:** Flash frames on big hits
+- **Slow Motion:** Key moments rendered at reduced speed with motion blur
+
+### Superpower Visual Effects
+| Power | Visual Treatment |
+|-------|------------------|
+| ⚡ **SUPER SPEED** | Lightning trails, slow-mo world, sonic boom rings |
+| 🛡️ **FORCE FIELD** | Blue hexagonal energy shield, ripple on impact |
+| 🔥 **LASER ARM** | Red tracer on ball, heat distortion, smoke trail |
+| 🧲 **MAGNET HANDS** | Gold particle streams between hands and ball |
+| 👁️ **X-RAY VISION** | Freeze frame, glowing player outlines, prediction lines |
+| 🌪️ **UNSTOPPABLE FORCE** | Orange aura, defenders flying backward, ground crack |
+
+---
+
+# 9. Monetization & Tier Pricing
+
+> ⚠️ **MVP NOTE:** Subscription tiers are **placeholder only**. No payment processing is implemented. Users can be upgraded manually via admin panel.
+
+| Tier | Monthly Price | Features |
+|------|---------------|----------|
+| **Free** | $0 | All basic predictions, 1x voting weight, XP earning, view trailers |
+| **Superfan** | $1.99/mo *(placeholder)* | All predictions unlocked, 3x voting weight, early video access, exclusive badge, points redemption |
+
+### Implementation Notes
+- **No Stripe integration** for MVP — tier changes are manual only
+- Admin can update user tiers via `/admin/users` page
+- Database stores tier as `'free'` or `'superfan'` only
+- Future: Add Stripe Checkout for self-service upgrades in Phase 3
+
+**Future Revenue Streams (Post-MVP):**
+- Points redemption partnerships with NFL teams
+- Digital collectibles (prediction moment NFTs)
+- Sponsored power-ups (brand integration)
+- Premium video content (director's cut, behind-the-scenes)
+- Merchandise tie-ins
+
+---
+
+# 10. Technical Requirements
+
+## 10.0 Mobile-First & Usability Requirements
+
+> 🎯 **Core Principle:** The site must be **responsive, mobile-first, and extremely easy to use.** Most fans will access on their phones.
+
+### Mobile-First Design Mandates
+
+| Requirement | Implementation |
+|-------------|----------------|
+| **Touch-friendly targets** | All buttons/links minimum 44x44px tap area |
+| **Thumb-zone navigation** | Primary actions reachable with one thumb |
+| **Fast load times** | < 3 second initial load on 3G, lazy-load images |
+| **No horizontal scroll** | Content fits viewport width at all breakpoints |
+| **Readable without zoom** | Base font 16px+, adequate contrast ratios |
+| **One-handed use** | Prediction cards swipeable, submit button sticky bottom |
+
+### Responsive Breakpoints (Tailwind)
+
+```css
+/* Mobile-first approach */
+sm: 640px    /* Large phones, small tablets */
+md: 768px    /* Tablets */
+lg: 1024px   /* Laptops */
+xl: 1280px   /* Desktops */
+```
+
+### Usability Priorities
+
+1. **Minimal friction to predict** — User should go from landing → prediction submitted in < 60 seconds
+2. **Clear visual feedback** — Selected options highlighted immediately, loading states visible
+3. **Progressive disclosure** — Show essential info first, details on tap/expand
+4. **Error prevention** — Disable submit until valid, confirm destructive actions
+5. **Accessible** — WCAG 2.1 AA compliance, screen reader friendly
+
+### Mobile-Specific UI Patterns
+
+| Pattern | Usage |
+|---------|-------|
+| **Bottom sheet modals** | Login/register, tier upgrade prompts |
+| **Sticky bottom CTA** | "Submit Predictions" button always visible |
+| **Card-based layout** | Prediction questions as swipeable cards |
+| **Pull-to-refresh** | Leaderboard, profile stats |
+| **Haptic feedback** | Confirm selection on supported devices |
+
+### Testing Requirements
+
+- Test on iPhone SE (smallest common phone) and iPhone 14 Pro Max
+- Test on Android (Chrome on Pixel)
+- Test on iPad (portrait and landscape)
+- Lighthouse mobile score > 90 for Performance, Accessibility
+- Manual testing with VoiceOver/TalkBack
+
+---
+
+## 10.1 Technology Stack
+
+| Layer | Technology | Notes |
+|-------|------------|-------|
+| **Frontend** | Vue.js 3 + TypeScript | Composition API, `<script setup>` |
+| **Styling** | Tailwind CSS | Utility-first, dark theme |
+| **State** | Pinia | Vue's official state management |
+| **Backend** | Vercel Functions | Serverless API routes |
+| **Database** | Supabase (PostgreSQL) | Accessed via Vercel Functions only |
+| **Auth** | Custom (bcrypt + sessions) | Email/password/username |
+| **AI (Script)** | Gemini 3 Flash | `gemini-3-flash-preview` |
+| **AI (Video)** | fal.ai Veo 3.1 | Text-to-video rendering |
+| **Hosting** | Vercel | Frontend + Functions |
+| **Storage** | Cloudflare R2 | Video file CDN |
+
+## 10.2 Dependencies
+
+```json
 // package.json
 {
   "dependencies": {
@@ -1799,20 +2149,33 @@ Storage	Cloudflare R2	Video file CDN
     "vite": "^5.0"
   }
 }
-10.3 Vercel CLI Setup & Configuration
-Install Vercel CLI
+```
+
+## 10.3 Vercel CLI Setup & Configuration
+
+### Install Vercel CLI
+
+```bash
 # Install globally
 npm install -g vercel
 
 # Login to Vercel
 vercel login
-Initialize Project
+```
+
+### Initialize Project
+
+```bash
 # In project root
 vercel init
 
 # Link to existing project (or create new)
 vercel link
-Project Configuration
+```
+
+### Project Configuration
+
+```json
 // vercel.json
 {
   "framework": "vue",
@@ -1829,7 +2192,11 @@ Project Configuration
     { "source": "/(.*)", "destination": "/index.html" }
   ]
 }
-Set Environment Variables via CLI
+```
+
+### Set Environment Variables via CLI
+
+```bash
 # Add environment variables (prompted for values)
 vercel env add SUPABASE_URL
 vercel env add SUPABASE_SERVICE_KEY
@@ -1841,14 +2208,22 @@ vercel env add SUPABASE_URL production < <(echo "https://xxxxx.supabase.co")
 
 # Pull env vars to local .env file
 vercel env pull .env.local
-Development
+```
+
+### Development
+
+```bash
 # Run locally with Vercel dev server (includes Functions)
 vercel dev
 
 # This starts:
 # - Vue dev server at http://localhost:3000
 # - API functions at http://localhost:3000/api/*
-Deployment
+```
+
+### Deployment
+
+```bash
 # Deploy to preview (creates unique URL)
 vercel
 
@@ -1857,7 +2232,11 @@ vercel --prod
 
 # Deploy with specific environment
 vercel --env production
-Useful CLI Commands
+```
+
+### Useful CLI Commands
+
+```bash
 # List all deployments
 vercel ls
 
@@ -1875,7 +2254,11 @@ vercel env ls
 
 # Remove environment variable
 vercel env rm VARIABLE_NAME
-Project Structure for Vercel
+```
+
+### Project Structure for Vercel
+
+```
 gridironscript/
 ├── api/                    # Vercel Functions (auto-detected)
 │   ├── _lib/
@@ -1905,101 +2288,143 @@ gridironscript/
 ├── package.json
 ├── vite.config.ts
 └── tsconfig.json
-10.4 Environment Variables
+```
+
+---
+
+## 10.4 Environment Variables
+
+```bash
 # .env.local (pulled via: vercel env pull)
 SUPABASE_URL=https://xxxxx.supabase.co
 SUPABASE_SERVICE_KEY=eyJxxxxx          # Server-side only, never expose
 GEMINI_API_KEY=AIzaxxxxx
 FAL_KEY=fal_xxxxx
-10.5 API Keys & Estimated Costs
-Service	Purpose	Est. Cost
-Supabase	Database	Free tier → $25/mo
-Gemini 3 Flash API	Script generation	~$0.10/1K input tokens
-fal.ai (Veo 3.1)	Video rendering	$0.20-0.40/sec
-Vercel	Hosting + Functions	Free tier → $20/mo
-Cloudflare R2	Video storage	$0.015/GB stored
-10.6 Estimated Rendering Costs Per Episode
-Trailer-Only Workflow (Default)
-Item	Calculation	Cost
-Script Generation (Gemini 3 Flash)	~10K tokens	$1.00
-Trailer Render (10 sec)	10 sec × $0.30/sec	$3.00
-Full Script	Stored, not rendered	$0.00
-Total (Trailer Only)	—	~$4
-Full Episode Workflow (Optional)
-Item	Calculation	Cost
-Script Generation	(already done)	$0.00
-Trailer Render	(already done)	$0.00
-Full Video Render (2 min)	120 sec × $0.30/sec	$36.00
-Total (Full Episode)	—	~$40
-💡 Cost Optimization: By rendering only the trailer initially, you save $36 per episode until you confirm audience interest.
+```
 
-11. Launch Roadmap
-Phase 1: MVP (4 weeks)
-[ ] Supabase schema setup
-[ ] Vue.js 3 + Tailwind frontend scaffold
-[ ] Vercel Functions API routes
-[ ] Email/password/username auth system
-[ ] Basic prediction web app
-[ ] Gemini 3 Flash script generation
-[ ] Trailer-only Veo 3.1 rendering
-[ ] Demo trailer for Super Bowl LX
-Phase 2: Automation (4 weeks)
-[ ] Automated trailer render pipeline
-[ ] Admin dashboard with render controls
-[ ] XP reward system + leaderboards
-[ ] Full episode render option (on-demand)
-[ ] Video concatenation via FFmpeg
-Phase 3: Scale (8 weeks)
-[ ] Full tier system (Free/Member/Superfan)
-[ ] Payment integration (Stripe)
-[ ] Stadium voting
-[ ] Superpower system
-[ ] YouTube channel launch
-[ ] Weekly trailer + selective full episode cadence
-12. Success Metrics
-Metric	Week 1 Target	Month 1 Target
-Registered Users	500	5,000
-Predictions Submitted	2,000	25,000
-Member Conversions	50	500
-Superfan Conversions	10	100
-YouTube Views (Full Video)	10,000	100,000
-YouTube Views (Trailer)	50,000	500,000
-Appendix A: UI/UX Wireframe Reference
-Fan-Facing Site (/)
+## 10.5 API Keys & Estimated Costs
+| Service | Purpose | Est. Cost |
+|---------|---------|-----------|
+| Supabase | Database | Free tier → $25/mo |
+| **Gemini 3 Flash API** | Script generation | ~$0.10/1K input tokens |
+| fal.ai (Veo 3.1) | Video rendering | $0.20-0.40/sec |
+| Vercel | Hosting + Functions | Free tier → $20/mo |
+| Cloudflare R2 | Video storage | $0.015/GB stored |
+
+## 10.6 Estimated Rendering Costs Per Episode
+
+### Trailer-Only Workflow (Default)
+| Item | Calculation | Cost |
+|------|-------------|------|
+| Script Generation (Gemini 3 Flash) | ~10K tokens | $1.00 |
+| **Trailer Render** (10 sec) | 10 sec × $0.30/sec | **$3.00** |
+| Full Script | Stored, not rendered | $0.00 |
+| **Total (Trailer Only)** | — | **~$4** |
+
+### Full Episode Workflow (Optional)
+| Item | Calculation | Cost |
+|------|-------------|------|
+| Script Generation | (already done) | $0.00 |
+| Trailer Render | (already done) | $0.00 |
+| **Full Video Render** (2 min) | 120 sec × $0.30/sec | **$36.00** |
+| **Total (Full Episode)** | — | **~$40** |
+
+> 💡 **Cost Optimization:** By rendering only the trailer initially, you save $36 per episode until you confirm audience interest.
+
+---
+
+# 11. Launch Roadmap
+
+## Phase 1: MVP (4 weeks)
+- [ ] Supabase schema setup
+- [ ] Vue.js 3 + Tailwind frontend scaffold
+- [ ] Vercel Functions API routes
+- [ ] Email/password/username auth system
+- [ ] Basic prediction web app
+- [ ] Gemini 3 Flash script generation
+- [ ] Trailer-only Veo 3.1 rendering
+- [ ] Demo trailer for Super Bowl LX
+
+## Phase 2: Automation (4 weeks)
+- [ ] Automated trailer render pipeline
+- [ ] Admin dashboard with render controls
+- [ ] XP reward system + leaderboards
+- [ ] Full episode render option (on-demand)
+- [ ] Video concatenation via FFmpeg
+
+## Phase 3: Scale (8 weeks)
+- [ ] Payment integration (Stripe) for Superfan tier
+- [ ] Points redemption partnerships with teams
+- [ ] Stadium voting (already built, enable for Superfans)
+- [ ] Superpower system (already built, enable for Superfans)
+- [ ] YouTube channel launch
+- [ ] Weekly trailer + selective full episode cadence
+
+---
+
+# 12. Success Metrics
+
+| Metric | Week 1 Target | Month 1 Target |
+|--------|---------------|----------------|
+| Registered Users | 500 | 5,000 |
+| Predictions Submitted | 2,000 | 25,000 |
+| Member Conversions | 50 | 500 |
+| Superfan Conversions | 10 | 100 |
+| YouTube Views (Full Video) | 10,000 | 100,000 |
+| YouTube Views (Trailer) | 50,000 | 500,000 |
+
+---
+
+# Appendix A: UI/UX Wireframe Reference
+
+## Fan-Facing Site (/)
+
+> 🎯 **Mobile-first, extremely easy to use.** Design for thumbs, not mice.
+
 Based on provided screenshots, the fan-facing web app should include:
 
-Header: "GridironScript" logo + XP counter (e.g., "Your XP: 1000")
-Hero Section: "You're The Scriptwriter" + "How It Works" (3-step explainer)
-Matchup Selector: Team cards with logos, records, and "BACKED BY" real player endorsements
-Prediction Cards: Sequential numbered questions (01, 02, 03...) with radio options and XP multipliers
-Locked Content: "🔒 Superfan Only" overlay with "Unlock All Questions" CTA
-Submit Button: Prominent action to finalize predictions
-Color Scheme:
+1. **Header:** "GridironScript" logo + XP counter (e.g., "Your XP: 1000") — compact on mobile
+2. **Hero Section:** "You're The Scriptwriter" + "How It Works" (3-step explainer) — stacks vertically on mobile
+3. **Matchup Selector:** Team cards with logos, records — full-width cards on mobile
+4. **Prediction Cards:** Sequential numbered questions (01, 02, 03...) with large tap targets for radio options and XP multipliers
+5. **Locked Content:** "🔒 Superfan Only" overlay with "Unlock All Questions" CTA
+6. **Submit Button:** **Sticky bottom bar on mobile** — always visible while scrolling
+7. **Profile Page:** Includes "Rewards" tab showing XP balance and placeholder team offers
 
-Background: Dark navy (#0f172a)
-Cards: Slightly lighter navy (#1e293b)
-Accent: Orange/gold (#f97316) for CTAs
-Text: White (#ffffff) and grey (#94a3b8)
-⚠️ NO admin links anywhere on the fan site. The header, footer, and navigation should ONLY contain fan-facing links: Home, Predict, Leaderboard, Profile, Login/Logout.
+**Mobile Layout Priorities:**
+- One prediction question visible at a time (card-based, swipeable)
+- Large touch targets (minimum 44px)
+- Bottom navigation on mobile (Home, Predict, Leaderboard, Profile)
+- Sticky submit button that scrolls with user
 
-Admin Dashboard (/admin) — Separate Interface
+**Color Scheme:**
+- Background: Dark navy (#0f172a)
+- Cards: Slightly lighter navy (#1e293b)
+- Accent: Orange/gold (#f97316) for CTAs
+- Text: White (#ffffff) and grey (#94a3b8)
+
+> ⚠️ **NO admin links anywhere on the fan site.** The header, footer, and navigation should ONLY contain fan-facing links: Home, Predict, Leaderboard, Profile, Login/Logout.
+
+---
+
+## Admin Dashboard (/admin) — Separate Interface
+
 The admin dashboard is a completely separate interface accessed only via direct URL.
 
-⚠️ DEMO MODE: No authentication required. Access via /admin.
+> ⚠️ **DEMO MODE:** No authentication required. Access via `/admin`.
 
-Admin Header:
+**Admin Header:**
+- "⚠️ Admin Panel (Demo)" branding (distinct from fan site)
+- "← Back to Fan Site" link
 
-"⚠️ Admin Panel (Demo)" branding (distinct from fan site)
-"← Back to Fan Site" link
-Admin Sidebar:
+**Admin Sidebar:**
+- Dashboard
+- Matchups
+- Scripts & Render
+- Videos
+- Users
 
-Dashboard
-Matchups
-Scripts & Render
-Videos
-Users
-Admin Color Scheme:
-
-Same dark theme but with subtle differences to indicate admin context
-Red/warning accents for destructive actions
-Green for successful renders
+**Admin Color Scheme:**
+- Same dark theme but with subtle differences to indicate admin context
+- Red/warning accents for destructive actions
+- Green for successful renders
