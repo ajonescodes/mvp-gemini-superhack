@@ -29,7 +29,7 @@ export const useResultsStore = defineStore('results', () => {
     loading.value = true
     error.value = null
     try {
-      const res = await fetch(`/api/predictions/results?matchup_id=${matchupId}`)
+      const res = await fetch(`/api/predictions?action=results&matchup_id=${matchupId}`)
       if (!res.ok) {
         throw new Error('Failed to load results')
       }

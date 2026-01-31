@@ -25,7 +25,7 @@ export const useMatchupsStore = defineStore('matchups', () => {
     loading.value = true
     error.value = null
     try {
-      const res = await fetch('/api/matchups/current')
+      const res = await fetch('/api/matchups?action=current')
       const data = await res.json()
       currentMatchup.value = data.matchup || null
     } catch (err) {
@@ -39,7 +39,7 @@ export const useMatchupsStore = defineStore('matchups', () => {
   async function fetchPredictionCount() {
     if (!currentMatchup.value) return
     try {
-      const res = await fetch(`/api/matchups/prediction-count?matchup_id=${currentMatchup.value.id}`)
+      const res = await fetch(`/api/matchups?action=prediction-count&matchup_id=${currentMatchup.value.id}`)
       const data = await res.json()
       predictionCount.value = data.unique_users || 0
     } catch {

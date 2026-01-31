@@ -1,6 +1,6 @@
 import { parse } from 'cookie'
 import type { VercelRequest } from '@vercel/node'
-import { supabase } from './supabase'
+import { supabase } from './supabase.js'
 
 export interface User {
   id: string

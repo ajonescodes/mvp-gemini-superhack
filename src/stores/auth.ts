@@ -21,7 +21,7 @@ export const useAuthStore = defineStore('auth', () => {
     loading.value = true
     error.value = null
     try {
-      const res = await fetch('/api/auth/me')
+      const res = await fetch('/api/auth?action=me')
       if (res.ok) {
         const data = await res.json()
         user.value = data.user
@@ -39,7 +39,7 @@ export const useAuthStore = defineStore('auth', () => {
     loading.value = true
     error.value = null
     try {
-      const res = await fetch('/api/auth/register', {
+      const res = await fetch('/api/auth?action=register', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ email, username, password }),
@@ -65,7 +65,7 @@ export const useAuthStore = defineStore('auth', () => {
     loading.value = true
     error.value = null
     try {
-      const res = await fetch('/api/auth/login', {
+      const res = await fetch('/api/auth?action=login', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ email, password }),
@@ -89,7 +89,7 @@ export const useAuthStore = defineStore('auth', () => {
 
   async function logout() {
     try {
-      await fetch('/api/auth/logout', { method: 'POST' })
+      await fetch('/api/auth?action=logout', { method: 'POST' })
     } finally {
       user.value = null
     }

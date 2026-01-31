@@ -127,7 +127,7 @@ const loadingVotes = ref(false)
 async function fetchMatchup() {
   loading.value = true
   try {
-    const res = await fetch('/api/matchups/current')
+    const res = await fetch('/api/matchups?action=current')
     const data = await res.json()
     matchup.value = data.matchup || null
   } catch {
@@ -144,7 +144,7 @@ async function updateStatus(status: string) {
   updateSuccess.value = false
   
   try {
-    const res = await fetch('/api/admin/matchups', {
+    const res = await fetch('/api/admin?action=matchup', {
       method: 'PATCH',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ id: matchup.value.id, status }),
@@ -168,7 +168,7 @@ async function updateStatus(status: string) {
 async function createSeedMatchup() {
   creating.value = true
   try {
-    const res = await fetch('/api/admin/matchups', {
+    const res = await fetch('/api/admin?action=matchup', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({
@@ -193,7 +193,7 @@ async function fetchVoteDistribution() {
   if (!matchup.value) return
   loadingVotes.value = true
   try {
-    const res = await fetch(`/api/admin/vote-distribution?matchup_id=${matchup.value.id}`)
+    const res = await fetch(`/api/admin?action=vote-distribution&matchup_id=${matchup.value.id}`)
     const data = await res.json()
     voteDistribution.value = data.categories || {}
   } catch {

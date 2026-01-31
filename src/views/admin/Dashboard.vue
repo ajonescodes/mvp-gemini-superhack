@@ -114,7 +114,7 @@ const stats = ref({
 
 async function fetchStats() {
   try {
-    const res = await fetch('/api/admin/stats')
+    const res = await fetch('/api/admin?action=stats')
     if (res.ok) {
       const data = await res.json()
       stats.value = data

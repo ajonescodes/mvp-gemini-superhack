@@ -92,7 +92,7 @@ async function fetchUsers() {
   loading.value = true
   error.value = null
   try {
-    const res = await fetch('/api/admin/users')
+    const res = await fetch('/api/admin?action=users')
     if (!res.ok) throw new Error('Failed to load users')
     const data = await res.json()
     users.value = data.users || []
@@ -108,7 +108,7 @@ async function upgradeToSuperfan(user: User) {
   upgradeSuccess.value = false
 
   try {
-    const res = await fetch(`/api/admin/users/${user.id}`, {
+    const res = await fetch(`/api/admin?action=user&id=${user.id}`, {
       method: 'PATCH',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ tier: 'superfan' }),

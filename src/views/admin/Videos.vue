@@ -122,7 +122,7 @@ const renderSuccess = ref(false)
 
 async function fetchMatchup() {
   try {
-    const res = await fetch('/api/matchups/current')
+    const res = await fetch('/api/matchups?action=current')
     const data = await res.json()
     matchup.value = data.matchup || null
     videoUrl.value = data.matchup?.video_url_trailer || null
@@ -134,7 +134,7 @@ async function fetchMatchup() {
 async function checkScript() {
   if (!matchup.value) return
   try {
-    const res = await fetch(`/api/admin/scripts?matchup_id=${matchup.value.id}`)
+    const res = await fetch(`/api/admin?action=scripts&matchup_id=${matchup.value.id}`)
     if (res.ok) {
       const data = await res.json()
       hasScript.value = !!data.script
@@ -151,7 +151,7 @@ async function renderTrailer() {
   renderSuccess.value = false
 
   try {
-    const res = await fetch('/api/admin/render-trailer', {
+    const res = await fetch('/api/admin?action=render-trailer', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ matchup_id: matchup.value.id }),

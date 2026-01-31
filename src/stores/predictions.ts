@@ -42,7 +42,7 @@ export const usePredictionsStore = defineStore('predictions', () => {
 
   async function loadExistingPredictions(matchupId: string) {
     try {
-      const res = await fetch(`/api/predictions/list?matchup_id=${matchupId}`)
+      const res = await fetch(`/api/predictions?action=list&matchup_id=${matchupId}`)
       if (res.ok) {
         const data = await res.json()
         for (const p of data.predictions || []) {
@@ -64,7 +64,7 @@ export const usePredictionsStore = defineStore('predictions', () => {
       // Only submit changed predictions
       for (const [category, selection] of Object.entries(selections.value)) {
         if (submittedSelections.value[category] !== selection) {
-          const res = await fetch('/api/predictions/submit', {
+          const res = await fetch('/api/predictions?action=submit', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({ matchup_id: matchupId, category, selection }),
