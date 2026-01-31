@@ -148,17 +148,48 @@ Fans can accumulate XP through correct predictions and eventually redeem points 
 3. **Redeem** — Exchange XP for discounts, merchandise, experiences
 
 ### Placeholder Offers (Demo Data)
+
+> 💡 **Digital-First Delivery:** All offers are designed to be delivered instantly via email/in-app — no physical fulfillment required.
+
+#### Digital Store Coupons
 | Team | Offer | XP Cost | Status |
 |------|-------|---------|--------|
-| Seattle Seahawks | 20% off team store | 5,000 XP | 🔒 Coming Soon |
-| Seattle Seahawks | Signed mini-helmet raffle entry | 10,000 XP | 🔒 Coming Soon |
-| New England Patriots | Free shipping on orders $50+ | 3,000 XP | 🔒 Coming Soon |
-| New England Patriots | VIP stadium tour raffle entry | 15,000 XP | 🔒 Coming Soon |
-| League-wide | $5 NFL Shop gift card | 8,000 XP | 🔒 Coming Soon |
+| Seattle Seahawks | 15% off Seahawks Pro Shop (digital code) | 3,000 XP | 🔒 Coming Soon |
+| Seattle Seahawks | 25% off single item (digital code) | 6,000 XP | 🔒 Coming Soon |
+| New England Patriots | 15% off Patriots ProShop (digital code) | 3,000 XP | 🔒 Coming Soon |
+| New England Patriots | Free shipping code (any order) | 2,000 XP | 🔒 Coming Soon |
+| League-wide | $5 NFL Shop digital gift card | 5,000 XP | 🔒 Coming Soon |
+| League-wide | $10 NFL Shop digital gift card | 9,000 XP | 🔒 Coming Soon |
+
+#### Virtual VIP Experiences
+| Team | Offer | XP Cost | Status |
+|------|-------|---------|--------|
+| Seattle Seahawks | Virtual meet & greet with Seahawks legend (30 min Zoom) | 25,000 XP | 🔒 Coming Soon |
+| Seattle Seahawks | Interactive virtual press conference — ask questions live | 15,000 XP | 🔒 Coming Soon |
+| New England Patriots | Virtual Q&A with Patriots alumni (60 min group session) | 20,000 XP | 🔒 Coming Soon |
+| New England Patriots | Exclusive virtual locker room tour with host | 10,000 XP | 🔒 Coming Soon |
+| League-wide | GridironScript creators AMA — behind-the-scenes access | 8,000 XP | 🔒 Coming Soon |
+| League-wide | Early access to next week's trailer (24 hours before public) | 1,000 XP | 🔒 Coming Soon |
+
+#### Exclusive Digital Content
+| Team | Offer | XP Cost | Status |
+|------|-------|---------|--------|
+| Seattle Seahawks | Exclusive Seahawks phone wallpaper pack | 500 XP | 🔒 Coming Soon |
+| Seattle Seahawks | Downloadable Seahawks hype video (4K) | 2,000 XP | 🔒 Coming Soon |
+| New England Patriots | Exclusive Patriots phone wallpaper pack | 500 XP | 🔒 Coming Soon |
+| New England Patriots | Patriots dynasty documentary early access | 5,000 XP | 🔒 Coming Soon |
+| League-wide | Custom GridironScript avatar frame | 1,500 XP | 🔒 Coming Soon |
+| League-wide | "Prophet" badge unlock (permanent leaderboard flair) | 10,000 XP | 🔒 Coming Soon |
 
 ### UI Implementation
 - **Profile Page:** "Rewards" tab showing XP balance and available offers
-- **Offer Cards:** Team logo, offer description, XP cost, "Redeem" button (disabled with "Coming Soon" label)
+- **Offer Categories:** Tabs or filters for "Coupons", "VIP Experiences", "Digital Content"
+- **Offer Cards:** Team logo, offer description, XP cost, delivery method icon, "Redeem" button (disabled with "Coming Soon" label)
+- **Redemption Flow (Future):** 
+  1. User clicks "Redeem" → Confirmation modal
+  2. XP deducted → Digital code/link generated
+  3. Delivered via email + in-app notification
+  4. Code appears in "My Rewards" section
 - **Redemption History:** Empty state with "Your redeemed offers will appear here"
 
 ### Database Schema (Placeholder)
@@ -167,11 +198,15 @@ Fans can accumulate XP through correct predictions and eventually redeem points 
 -- Team offers table (for future use)
 CREATE TABLE team_offers (
   id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
-  team_name TEXT NOT NULL,
+  team_name TEXT NOT NULL,              -- "Seattle Seahawks", "New England Patriots", "League-wide"
   offer_title TEXT NOT NULL,
   offer_description TEXT,
+  offer_category TEXT NOT NULL CHECK (offer_category IN ('coupon', 'vip_experience', 'digital_content')),
   xp_cost INTEGER NOT NULL,
-  is_active BOOLEAN DEFAULT false,  -- false for MVP
+  delivery_method TEXT DEFAULT 'email' CHECK (delivery_method IN ('email', 'in_app', 'zoom_link', 'download')),
+  is_active BOOLEAN DEFAULT false,      -- false for MVP
+  quantity_available INTEGER,           -- NULL = unlimited
+  expires_at TIMESTAMPTZ,               -- NULL = never expires
   created_at TIMESTAMPTZ DEFAULT NOW()
 );
 
@@ -181,12 +216,15 @@ CREATE TABLE user_redemptions (
   user_id UUID REFERENCES users(id),
   offer_id UUID REFERENCES team_offers(id),
   xp_spent INTEGER NOT NULL,
+  redemption_code TEXT,                 -- Generated code for coupons
+  redemption_url TEXT,                  -- Zoom link, download URL, etc.
   redeemed_at TIMESTAMPTZ DEFAULT NOW(),
-  status TEXT DEFAULT 'pending' CHECK (status IN ('pending', 'fulfilled', 'expired'))
+  delivered_at TIMESTAMPTZ,             -- When email/notification sent
+  status TEXT DEFAULT 'pending' CHECK (status IN ('pending', 'delivered', 'used', 'expired'))
 );
 ```
 
-> 💡 **Future Integration:** Partner with NFL teams to provide real offers. Revenue share model TBD.
+> 💡 **Future Integration:** Partner with NFL teams to provide real digital offers. All fulfillment is automated — no physical shipping required. Revenue share model TBD.
 
 ---
 
