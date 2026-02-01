@@ -1,11 +1,11 @@
 import type { VercelRequest, VercelResponse } from '@vercel/node'
-import { GoogleGenerativeAI } from '@google/generative-ai'
+import { GoogleGenAI } from '@google/genai'
 import { fal } from '@fal-ai/client'
 import { supabase } from './_lib/supabase.js'
 import { MULTIPLIERS, BASE_XP } from './_lib/multipliers.js'
 
 fal.config({ credentials: process.env.FAL_KEY })
-const genAI = new GoogleGenerativeAI(process.env.GEMINI_API_KEY!)
+const ai = new GoogleGenAI({ apiKey: process.env.GEMINI_API_KEY })
 
 export default async function handler(req: VercelRequest, res: VercelResponse) {
   const action = req.query.action as string
@@ -101,9 +101,15 @@ RULES: 1. Respect fan consensus but allow upsets (15-25% chance) 2. PRIORITIZE D
 OUTPUT (valid JSON only):
 {"outcomes":{"opening_possession":"seahawks or patriots","first_score_method":"sea_td or sea_fg or ne_td or ne_fg or safety","first_td_position":"wr or rb or te or qb_rush or def_st","scoring_pace":"under_35 or 35_to_50 or over_50","first_field_goal":"seahawks or patriots or no_fgs","final_outcome":"seahawks or patriots","victory_margin":"1_to_7 or 8_to_14 or 15_plus","overtime":"no or yes","consecutive_scores":"2_in_row or 3_in_row or 4_plus","seahawks_powerup":"super_speed or force_field or laser_arm","patriots_powerup":"super_speed or magnet_hands or xray_vision","powerup_timing":"opening_drive or halftime or clutch_time"},"final_score":{"seahawks":0,"patriots":0},"trailer_prompt":"8-second dramatic anime trailer description","key_moments":["moment1","moment2","moment3"]}`
 
-    const model = genAI.getGenerativeModel({ model: 'gemini-3-flash-preview' })
-    const result = await model.generateContent(prompt)
-    const text = result.response.text()
+    const result = await ai.models.generateContent({
+      model: 'gemini-3-flash-preview',
+      contents: prompt,
+      config: {
+        thinkingConfig: { thinkingLevel: 'low' },  // Minimize latency for JSON generation
+        responseMimeType: 'application/json',      // Request JSON output
+      },
+    })
+    const text = result.text || ''
     const jsonMatch = text.match(/\{[\s\S]*\}/)
     if (!jsonMatch) return res.status(500).json({ error: 'Failed to parse response' })
     const scriptData = JSON.parse(jsonMatch[0])
