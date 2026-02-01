@@ -148,8 +148,6 @@ OUTPUT (valid JSON only):
     if (!videoUrl) return res.status(500).json({ error: 'No video URL' })
 
     await supabase.from('generated_scripts').update({ video_url_trailer: videoUrl }).eq('id', script.id)
-    // Also update matchups table so Watch page can find it
-    await supabase.from('matchups').update({ video_url_trailer: videoUrl }).eq('id', matchup_id)
     return res.status(200).json({ video_url: videoUrl })
   }
 

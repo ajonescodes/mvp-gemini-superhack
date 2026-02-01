@@ -14,11 +14,13 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
       .single()
 
     let videoUrl = null
-    if (matchup?.status === 'complete') {
+    if (matchup && (matchup.status === 'closed' || matchup.status === 'complete')) {
       const { data: script } = await supabase
         .from('generated_scripts')
         .select('video_url_trailer')
         .eq('matchup_id', matchup.id)
+        .order('generated_at', { ascending: false })
+        .limit(1)
         .single()
       videoUrl = script?.video_url_trailer || null
     }
