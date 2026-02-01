@@ -98,8 +98,28 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
 MATCHUP: ${matchup.home_team} vs ${matchup.away_team} (Super Bowl LX)
 FAN VOTES: ${JSON.stringify(aggregated, null, 2)}
 RULES: 1. Respect fan consensus but allow upsets (15-25% chance) 2. PRIORITIZE DRAMA 3. Outcomes must be coherent
+
+TRAILER PROMPT REQUIREMENTS:
+The trailer_prompt field must be a HIGHLY DETAILED 8-second Hollywood-style cinematic trailer description following this EXACT structure:
+
+1. ARTISTIC STYLE (state explicitly): Bold cel-shaded anime aesthetic, vibrant Saturday-morning cartoon colors, thick black outlines, exaggerated expressions, speed lines, dramatic lighting with lens flares, Studio Ghibli meets Eyeshield 21 energy.
+
+2. MUSIC DIRECTION: Epic orchestral score with thundering drums, rising strings building tension, and a dramatic bass drop at the climax.
+
+3. TIMESTAMP-BY-TIMESTAMP BREAKDOWN (include ALL):
+   - [0:00-0:01] COLD OPEN: Black screen, dramatic orchestral hit, stadium lights flash on revealing packed anime crowd with exaggerated cheering
+   - [0:01-0:02] TEAM INTRO - HOME: ${matchup.home_team} players bursting through banner in dramatic slow-mo, eyes glowing with determination, team colors blazing
+   - [0:02-0:03] TEAM INTRO - AWAY: ${matchup.away_team} players emerging from tunnel with fierce anime expressions, dramatic wind effects on jerseys
+   - [0:03-0:04] KEY MOMENT #1: Reference the first key_moment - show a dramatic play with speed lines, impact frames, and anime-style slow motion
+   - [0:04-0:05] KEY MOMENT #2: Reference the second key_moment - intense close-up reaction shots, sweat droplets flying, crowd gasping
+   - [0:05-0:06] POWERUP CLIMAX: The winning team's powerup activating with massive energy aura, glowing effects, screen-shaking intensity
+   - [0:06-0:07] VICTORY FLASH: Rapid montage of 3-4 dramatic plays, scoreboard showing final score, confetti explosion
+   - [0:07-0:08] END CARD: Fade to black, then bold stylized text appears: "WATCH THE FULL MATCH" / "Before the Super Bowl" / "YouTube @PromptPlay" with subscribe button graphic
+
+4. Include specific details about both teams, reference the actual key_moments, and weave in the powerup activation dramatically.
+
 OUTPUT (valid JSON only):
-{"outcomes":{"opening_possession":"seahawks or patriots","first_score_method":"sea_td or sea_fg or ne_td or ne_fg or safety","first_td_position":"wr or rb or te or qb_rush or def_st","scoring_pace":"under_35 or 35_to_50 or over_50","first_field_goal":"seahawks or patriots or no_fgs","final_outcome":"seahawks or patriots","victory_margin":"1_to_7 or 8_to_14 or 15_plus","overtime":"no or yes","consecutive_scores":"2_in_row or 3_in_row or 4_plus","seahawks_powerup":"super_speed or force_field or laser_arm","patriots_powerup":"super_speed or magnet_hands or xray_vision","powerup_timing":"opening_drive or halftime or clutch_time"},"final_score":{"seahawks":0,"patriots":0},"trailer_prompt":"8-second dramatic anime trailer description","key_moments":["moment1","moment2","moment3"]}`
+{"outcomes":{"opening_possession":"seahawks or patriots","first_score_method":"sea_td or sea_fg or ne_td or ne_fg or safety","first_td_position":"wr or rb or te or qb_rush or def_st","scoring_pace":"under_35 or 35_to_50 or over_50","first_field_goal":"seahawks or patriots or no_fgs","final_outcome":"seahawks or patriots","victory_margin":"1_to_7 or 8_to_14 or 15_plus","overtime":"no or yes","consecutive_scores":"2_in_row or 3_in_row or 4_plus","seahawks_powerup":"super_speed or force_field or laser_arm","patriots_powerup":"super_speed or magnet_hands or xray_vision","powerup_timing":"opening_drive or halftime or clutch_time"},"final_score":{"seahawks":0,"patriots":0},"trailer_prompt":"MUST BE 400+ words following the exact timestamp structure above with vivid anime/cartoon visual descriptions for each second, dramatic music cues, both teams featured prominently, key_moments referenced, powerup activation scene, and ending with the YouTube @PromptPlay end card","key_moments":["moment1 - detailed dramatic description","moment2 - detailed dramatic description","moment3 - detailed dramatic description"]}`
 
     const result = await ai.models.generateContent({
       model: 'gemini-3-flash-preview',
@@ -137,7 +157,18 @@ OUTPUT (valid JSON only):
     const { data: script } = await supabase.from('generated_scripts').select('*').eq('matchup_id', matchup_id).order('generated_at', { ascending: false }).limit(1).single()
     if (!script) return res.status(404).json({ error: 'Script not found' })
 
-    const veoPrompt = `Anime-style American football trailer, 8 seconds, high energy. ${script.script_json?.trailer_prompt || ''} Bold cel-shaded anime aesthetic, speed lines, dramatic lighting. Seahawks: Navy + Green. Patriots: Navy + Red.`
+    const veoPrompt = `CINEMATIC ANIME FOOTBALL TRAILER - 8 SECONDS - HOLLYWOOD BLOCKBUSTER STYLE
+
+VISUAL STYLE (CRITICAL): Bold cel-shaded anime/cartoon aesthetic inspired by Eyeshield 21 and Studio Ghibli. Thick black outlines on all characters. Vibrant saturated colors with dramatic lighting. Exaggerated facial expressions showing determination, shock, and triumph. Speed lines during action. Impact frames with screen-shaking effects. Lens flares on stadium lights. Saturday-morning cartoon energy meets sports anime intensity.
+
+TEAM COLORS: Seahawks = Navy Blue + Action Green with glowing effects. Patriots = Navy Blue + Red with metallic sheen.
+
+AUDIO DIRECTION: Epic orchestral score with thundering taiko drums, soaring violin crescendos, building tension throughout, massive bass drop at powerup moment.
+
+SCENE FLOW:
+${script.script_json?.trailer_prompt || 'Dramatic anime football action featuring both teams in intense competition, culminating in an explosive powerup activation and victory celebration. End with stylized text card: WATCH THE FULL MATCH - Before the Super Bowl - YouTube @PromptPlay'}
+
+MANDATORY END CARD (final 1.5 seconds): Fade to black, then bold anime-style text animates on screen: "WATCH THE FULL MATCH" in large letters, "Before the Super Bowl" below it, "YouTube @PromptPlay" with a stylized subscribe button. Text should have dramatic glow effects and anime-style motion.`
 
     const result = await fal.subscribe('fal-ai/veo3.1/fast', {
       input: { prompt: veoPrompt, aspect_ratio: '16:9', duration: '8s' },
