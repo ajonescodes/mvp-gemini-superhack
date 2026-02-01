@@ -101,7 +101,7 @@ RULES: 1. Respect fan consensus but allow upsets (15-25% chance) 2. PRIORITIZE D
 OUTPUT (valid JSON only):
 {"outcomes":{"opening_possession":"seahawks or patriots","first_score_method":"sea_td or sea_fg or ne_td or ne_fg or safety","first_td_position":"wr or rb or te or qb_rush or def_st","scoring_pace":"under_35 or 35_to_50 or over_50","first_field_goal":"seahawks or patriots or no_fgs","final_outcome":"seahawks or patriots","victory_margin":"1_to_7 or 8_to_14 or 15_plus","overtime":"no or yes","consecutive_scores":"2_in_row or 3_in_row or 4_plus","seahawks_powerup":"super_speed or force_field or laser_arm","patriots_powerup":"super_speed or magnet_hands or xray_vision","powerup_timing":"opening_drive or halftime or clutch_time"},"final_score":{"seahawks":0,"patriots":0},"trailer_prompt":"8-second dramatic anime trailer description","key_moments":["moment1","moment2","moment3"]}`
 
-    const model = genAI.getGenerativeModel({ model: 'gemini-2.0-flash' })
+    const model = genAI.getGenerativeModel({ model: 'gemini-3-flash-preview' })
     const result = await model.generateContent(prompt)
     const text = result.response.text()
     const jsonMatch = text.match(/\{[\s\S]*\}/)
