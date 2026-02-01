@@ -105,7 +105,7 @@ OUTPUT (valid JSON only):
       model: 'gemini-3-flash-preview',
       contents: prompt,
       config: {
-        thinkingConfig: { thinkingLevel: 'low' },  // Minimize latency for JSON generation
+        thinkingConfig: { thinkingLevel: 'high' },  // Default: maximize reasoning depth
         responseMimeType: 'application/json',      // Request JSON output
       },
     })
