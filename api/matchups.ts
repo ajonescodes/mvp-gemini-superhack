@@ -14,7 +14,7 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
       .single()
 
     let videoUrl = null
-    if (matchup && (matchup.status === 'closed' || matchup.status === 'complete')) {
+    if (matchup) {
       const { data: script } = await supabase
         .from('generated_scripts')
         .select('video_url_trailer')
