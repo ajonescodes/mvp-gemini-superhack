@@ -1,11 +1,21 @@
 <template>
   <div class="min-h-screen bg-slate-900 py-8 px-4">
+    <!-- Upgrade Modal -->
+    <UpgradeModal 
+      :show="showUpgradeModal" 
+      @close="showUpgradeModal = false"
+      @upgraded="showUpgradeModal = false"
+    />
+
     <div class="max-w-2xl mx-auto">
       <!-- Header -->
       <div class="text-center mb-8">
-        <h1 class="text-3xl font-bold text-white mb-2">Make Your Predictions</h1>
+        <h1 class="text-3xl font-bold text-white mb-2">Write the Story</h1>
         <p class="text-slate-400">
-          {{ auth.isLoggedIn ? 'Select your picks for each category' : 'Fill in your picks, then sign in to submit' }}
+          {{ auth.isLoggedIn ? 'Cast your votes to shape the pregame show' : 'Cast your votes, then sign in to submit' }}
+        </p>
+        <p class="text-slate-500 text-sm mt-2">
+          Your choices influence the AI-generated anime streamed live before kickoff
         </p>
       </div>
 
@@ -19,19 +29,19 @@
 
       <!-- Closed State -->
       <div v-else-if="!matchups.isOpen && !matchups.isComplete" class="text-center py-20">
-        <p class="text-slate-400 text-lg mb-4">Predictions are closed.</p>
-        <p class="text-slate-500">The AI is generating the game video. Check back soon!</p>
+        <p class="text-slate-400 text-lg mb-4">Voting is closed.</p>
+        <p class="text-slate-500">The AI is generating the pregame show. Check back soon!</p>
       </div>
 
       <!-- Complete State -->
       <div v-else-if="matchups.isComplete" class="text-center py-20">
-        <p class="text-white text-lg mb-4">The game has been generated!</p>
+        <p class="text-white text-lg mb-4">The pregame show has been generated!</p>
         <div class="flex gap-4 justify-center">
           <router-link to="/results" class="btn-secondary">
             View Your Results
           </router-link>
           <router-link to="/watch" class="btn-primary">
-            Watch Trailer
+            Watch Now
           </router-link>
         </div>
       </div>
@@ -55,9 +65,17 @@
             <div class="w-full border-t border-slate-700"></div>
           </div>
           <div class="relative flex justify-center">
-            <span class="px-4 bg-slate-900 text-slate-400 text-sm">
-              Superfan Exclusive
+            <span v-if="auth.isSuperfan" class="px-4 bg-slate-900 text-orange-400 text-sm font-medium">
+              ⚡ Superfan Exclusive
             </span>
+            <button 
+              v-else
+              @click="handleUnlockClick"
+              class="px-4 py-2 bg-gradient-to-r from-orange-500 to-amber-500 hover:from-orange-600 hover:to-amber-600 text-white text-sm font-bold rounded-full transition flex items-center gap-2"
+            >
+              <span>⚡</span>
+              <span>Unlock Superfan Content</span>
+            </button>
           </div>
         </div>
 
@@ -70,6 +88,7 @@
             :submitted="predictions.submittedSelections[category.id]"
             :locked="!auth.isSuperfan"
             @select="(optionId) => handleSuperfanSelect(category.id, optionId)"
+            @unlock="handleUnlockClick"
           />
         </div>
 
@@ -79,7 +98,7 @@
             <div class="flex items-center justify-between mb-4">
               <div>
                 <p class="text-white font-semibold">
-                  {{ predictions.selectionCount }} / {{ totalCategories }} predictions
+                  {{ predictions.selectionCount }} / {{ totalCategories }} votes cast
                 </p>
                 <p v-if="predictions.hasUnsavedChanges" class="text-orange-400 text-sm">
                   Unsaved changes
@@ -93,7 +112,7 @@
                 :disabled="predictions.submitting || predictions.selectionCount === 0"
                 class="px-6 py-3 bg-orange-500 hover:bg-orange-600 disabled:opacity-50 disabled:cursor-not-allowed text-white font-bold rounded-lg transition"
               >
-                {{ predictions.submitting ? 'Submitting...' : 'Submit Predictions' }}
+                {{ predictions.submitting ? 'Submitting...' : 'Submit Votes' }}
               </button>
             </div>
             <p v-if="predictions.error" class="text-red-400 text-sm">
@@ -107,18 +126,20 @@
 </template>
 
 <script setup lang="ts">
-import { computed, onMounted, provide, inject } from 'vue'
+import { ref, computed, onMounted, provide, inject } from 'vue'
 import { useAuthStore } from '@/stores/auth'
 import { useMatchupsStore } from '@/stores/matchups'
 import { usePredictionsStore } from '@/stores/predictions'
 import { FREE_CATEGORIES, SUPERFAN_CATEGORIES } from '@/constants/categories'
 import PredictionCard from '@/components/PredictionCard.vue'
+import UpgradeModal from '@/components/UpgradeModal.vue'
 
 const auth = useAuthStore()
 const matchups = useMatchupsStore()
 const predictions = usePredictionsStore()
 
 const showAuthModal = inject('showAuthModal') as () => void
+const showUpgradeModal = ref(false)
 
 const freeCategories = FREE_CATEGORIES
 const superfanCategories = SUPERFAN_CATEGORIES
@@ -131,10 +152,18 @@ const totalCategories = computed(() => {
 
 function handleSuperfanSelect(categoryId: string, optionId: string) {
   if (!auth.isSuperfan) {
-    // Could show upgrade prompt here
+    showUpgradeModal.value = true
     return
   }
   predictions.selectOption(categoryId, optionId)
+}
+
+function handleUnlockClick() {
+  if (!auth.isLoggedIn) {
+    showAuthModal()
+    return
+  }
+  showUpgradeModal.value = true
 }
 
 async function handleSubmit() {

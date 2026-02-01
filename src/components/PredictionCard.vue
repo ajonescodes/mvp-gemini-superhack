@@ -6,12 +6,13 @@
     <!-- Locked Overlay -->
     <div 
       v-if="locked" 
-      class="absolute inset-0 bg-slate-900/80 rounded-xl flex items-center justify-center z-10"
+      @click="$emit('unlock')"
+      class="absolute inset-0 bg-slate-900/80 rounded-xl flex items-center justify-center z-10 cursor-pointer hover:bg-slate-900/70 transition"
     >
       <div class="text-center">
         <span class="text-3xl mb-2 block">🔒</span>
         <p class="text-slate-300 font-medium">Superfan Only</p>
-        <p class="text-slate-500 text-sm">Upgrade to unlock</p>
+        <p class="text-orange-400 text-sm font-medium hover:underline">Tap to unlock →</p>
       </div>
     </div>
 
@@ -22,7 +23,7 @@
       </div>
       <div>
         <h3 class="text-lg font-semibold text-white">{{ category.question }}</h3>
-        <p class="text-slate-500 text-sm">Select one option</p>
+        <p class="text-slate-500 text-sm">Cast your vote</p>
       </div>
     </div>
 
@@ -104,5 +105,6 @@ defineProps<{
 
 defineEmits<{
   (e: 'select', optionId: string): void
+  (e: 'unlock'): void
 }>()
 </script>

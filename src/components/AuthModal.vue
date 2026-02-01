@@ -23,7 +23,7 @@
         {{ isLogin ? 'Welcome Back' : 'Create Account' }}
       </h2>
       <p class="text-slate-400 mb-6">
-        {{ isLogin ? 'Sign in to submit your predictions' : 'Join to submit predictions and earn XP' }}
+        {{ isLogin ? 'Sign in to submit your votes' : 'Join to shape the show and earn XP' }}
       </p>
 
       <!-- Form -->

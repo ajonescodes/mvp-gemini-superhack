@@ -15,7 +15,7 @@ export const CATEGORIES: Category[] = [
   // Free Tier Categories
   {
     id: 'opening_possession',
-    question: 'Who scores first?',
+    question: 'Who should score first in your story?',
     options: [
       { id: 'seahawks', label: 'Seattle Seahawks', multiplier: 1.8 },
       { id: 'patriots', label: 'New England Patriots', multiplier: 2.0 },
@@ -24,7 +24,7 @@ export const CATEGORIES: Category[] = [
   },
   {
     id: 'first_score_method',
-    question: 'How is the first score achieved?',
+    question: 'How does the first score happen?',
     options: [
       { id: 'sea_td', label: 'Seahawks Touchdown', multiplier: 2.0 },
       { id: 'sea_fg', label: 'Seahawks Field Goal', multiplier: 2.5 },
@@ -36,7 +36,7 @@ export const CATEGORIES: Category[] = [
   },
   {
     id: 'first_td_position',
-    question: 'What position scores the first TD?',
+    question: 'Who scores the first TD?',
     options: [
       { id: 'wr', label: 'Wide Receiver', multiplier: 1.6 },
       { id: 'rb', label: 'Running Back', multiplier: 2.0 },
@@ -48,27 +48,27 @@ export const CATEGORIES: Category[] = [
   },
   {
     id: 'scoring_pace',
-    question: 'Total combined points?',
+    question: 'How high-scoring should the game be?',
     options: [
-      { id: 'under_35', label: 'Under 35 points', multiplier: 2.3 },
-      { id: '35_to_50', label: '35-50 points', multiplier: 1.5 },
-      { id: 'over_50', label: 'Over 50 points', multiplier: 2.8 },
+      { id: 'under_35', label: 'Under 35 points (defensive battle)', multiplier: 2.3 },
+      { id: '35_to_50', label: '35-50 points (balanced)', multiplier: 1.5 },
+      { id: 'over_50', label: 'Over 50 points (shootout!)', multiplier: 2.8 },
     ],
     tier: 'free',
   },
   {
     id: 'first_field_goal',
-    question: 'Who hits the first field goal?',
+    question: 'Who kicks the first field goal?',
     options: [
       { id: 'seahawks', label: 'Seattle Seahawks', multiplier: 1.6 },
       { id: 'patriots', label: 'New England Patriots', multiplier: 2.2 },
-      { id: 'no_fgs', label: 'No field goals made', multiplier: 3.5 },
+      { id: 'no_fgs', label: 'No field goals in the show', multiplier: 3.5 },
     ],
     tier: 'free',
   },
   {
     id: 'final_outcome',
-    question: 'Who wins Super Bowl LX?',
+    question: 'Who wins in your story?',
     options: [
       { id: 'seahawks', label: 'Seattle Seahawks', multiplier: 2.1 },
       { id: 'patriots', label: 'New England Patriots', multiplier: 1.9 },
@@ -77,20 +77,20 @@ export const CATEGORIES: Category[] = [
   },
   {
     id: 'victory_margin',
-    question: 'Final point differential?',
+    question: 'How close is the final score?',
     options: [
-      { id: '1_to_7', label: '1-7 points (one score)', multiplier: 2.0 },
-      { id: '8_to_14', label: '8-14 points (two scores)', multiplier: 1.8 },
+      { id: '1_to_7', label: '1-7 points (nail-biter!)', multiplier: 2.0 },
+      { id: '8_to_14', label: '8-14 points (solid win)', multiplier: 1.8 },
       { id: '15_plus', label: '15+ points (blowout)', multiplier: 2.5 },
     ],
     tier: 'free',
   },
   {
     id: 'overtime',
-    question: 'Does the game go to overtime?',
+    question: 'Should the game go to overtime?',
     options: [
       { id: 'no', label: 'No - ends in regulation', multiplier: 1.2 },
-      { id: 'yes', label: 'Yes - overtime required', multiplier: 5.0 },
+      { id: 'yes', label: 'Yes - overtime drama!', multiplier: 5.0 },
     ],
     tier: 'free',
   },

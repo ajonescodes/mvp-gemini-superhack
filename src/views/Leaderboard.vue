@@ -4,7 +4,7 @@
       <!-- Header -->
       <div class="text-center mb-8">
         <h1 class="text-3xl font-bold text-white mb-2">Leaderboard</h1>
-        <p class="text-slate-400">Top prediction masters</p>
+        <p class="text-slate-400">Top storytellers shaping the show</p>
       </div>
 
       <!-- Loading State -->
@@ -23,7 +23,7 @@
       <div v-else-if="users.length === 0" class="text-center py-20">
         <p class="text-slate-400">No users on the leaderboard yet.</p>
         <router-link to="/predict" class="text-orange-500 hover:underline mt-4 inline-block">
-          Be the first to predict!
+          Be the first to write the story!
         </router-link>
       </div>
 

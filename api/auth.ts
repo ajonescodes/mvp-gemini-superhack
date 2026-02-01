@@ -83,5 +83,27 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
     return res.status(200).json({ message: 'Logged out successfully' })
   }
 
+  // POST /api/auth?action=upgrade (Mock upgrade to Superfan - Demo only)
+  if (req.method === 'POST' && action === 'upgrade') {
+    const user = await getAuthUser(req)
+    if (!user) return res.status(401).json({ error: 'Not authenticated' })
+
+    if (user.tier === 'superfan') {
+      return res.status(200).json({ message: 'Already a Superfan!', user })
+    }
+
+    // Mock upgrade - no payment required for demo
+    const { data: updatedUser, error } = await supabase
+      .from('users')
+      .update({ tier: 'superfan' })
+      .eq('id', user.id)
+      .select('id, email, username, tier, xp_total')
+      .single()
+
+    if (error) return res.status(500).json({ error: 'Failed to upgrade' })
+
+    return res.status(200).json({ message: 'Upgraded to Superfan!', user: updatedUser })
+  }
+
   return res.status(405).json({ error: 'Method not allowed' })
 }

@@ -4,7 +4,7 @@
       <!-- Header -->
       <div class="text-center mb-8">
         <h1 class="text-3xl font-bold text-white mb-2">Your Results</h1>
-        <p class="text-slate-400">See how your predictions matched up</p>
+        <p class="text-slate-400">See how your votes shaped the show</p>
       </div>
 
       <!-- Loading State -->
@@ -55,7 +55,7 @@
               </p>
             </div>
             <div class="text-right">
-              <p class="text-slate-400 text-sm">Correct Predictions</p>
+              <p class="text-slate-400 text-sm">Winning Votes</p>
               <p class="text-2xl font-bold text-white">
                 {{ correctCount }} / {{ results.results.predictions.length }}
               </p>
@@ -75,7 +75,7 @@
         <!-- Watch CTA -->
         <div class="mt-8 text-center">
           <router-link to="/watch" class="btn-primary">
-            Watch the Trailer
+            Watch the Show
           </router-link>
         </div>
       </div>

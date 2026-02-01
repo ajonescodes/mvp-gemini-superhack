@@ -25,17 +25,17 @@
           PROMPT<span class="text-orange-500">PLAY</span>
         </h1>
         <p class="text-xl md:text-2xl text-slate-300 mb-8 max-w-2xl mx-auto">
-          You write the script. AI brings it to life.
+          The Game Before the Game
         </p>
         <p class="text-slate-400 mb-8 max-w-xl mx-auto">
-          Submit your predictions for the big game. The community's choices determine the story. 
-          AI generates an anime-style video of YOUR vision.
+          Write the script for the ultimate anime-style pregame show, streamed live on YouTube before kickoff. 
+          Your votes shape the story. AI brings it to life.
         </p>
         <router-link 
           to="/predict"
           class="btn-primary text-lg"
         >
-          Make Your Predictions
+          Write Your Story
         </router-link>
       </div>
       
@@ -51,7 +51,7 @@
     <section class="py-20 px-4">
       <h2 class="text-4xl font-bold text-center text-white mb-4">How It Works</h2>
       <p class="text-slate-400 text-center mb-16 max-w-xl mx-auto">
-        Three simple steps to become the scriptwriter of the ultimate showdown
+        Three simple steps to co-write the pregame show everyone will be watching
       </p>
       <div class="max-w-5xl mx-auto grid md:grid-cols-3 gap-8">
         <div class="text-center p-6">
@@ -59,9 +59,9 @@
             🎯
           </div>
           <div class="text-orange-500 font-bold text-sm mb-2">STEP 1</div>
-          <h3 class="text-xl font-bold text-white mb-2">PREDICT</h3>
+          <h3 class="text-xl font-bold text-white mb-2">VOTE</h3>
           <p class="text-slate-400">
-            Pick who scores first, who wins, and more. Choose superpowers for each team!
+            Decide who scores first, who wins, and more. Pick superpowers for each team!
           </p>
         </div>
         <div class="text-center p-6">
@@ -69,9 +69,9 @@
             🤖
           </div>
           <div class="text-orange-500 font-bold text-sm mb-2">STEP 2</div>
-          <h3 class="text-xl font-bold text-white mb-2">WE GENERATE</h3>
+          <h3 class="text-xl font-bold text-white mb-2">AI GENERATES</h3>
           <p class="text-slate-400">
-            AI weighs the community's predictions and creates an anime-style game simulation
+            Community votes shape the story. AI creates an anime-style video of the game you wrote.
           </p>
         </div>
         <div class="text-center p-6">
@@ -79,9 +79,9 @@
             🏆
           </div>
           <div class="text-orange-500 font-bold text-sm mb-2">STEP 3</div>
-          <h3 class="text-xl font-bold text-white mb-2">WATCH & WIN</h3>
+          <h3 class="text-xl font-bold text-white mb-2">WATCH LIVE</h3>
           <p class="text-slate-400">
-            See your predictions come to life. Earn XP for correct calls and climb the leaderboard!
+            Tune in to YouTube before kickoff. See YOUR story play out live!
           </p>
         </div>
       </div>
@@ -127,7 +127,7 @@
         <!-- Prediction Count -->
         <p class="text-2xl text-white mb-8" v-if="matchups.hasActiveMatchup">
           <span class="text-orange-500 font-bold">{{ matchups.predictionCount.toLocaleString() }}</span> 
-          fans have predicted
+          fans writing the story
         </p>
         
         <!-- Status-based CTA -->
@@ -189,12 +189,12 @@
 
     <!-- Final CTA -->
     <section class="py-20 px-4 text-center">
-      <h2 class="text-3xl font-bold text-white mb-4">Ready to Write History?</h2>
+      <h2 class="text-3xl font-bold text-white mb-4">Ready to Write the Pregame Show?</h2>
       <p class="text-slate-400 mb-8 max-w-md mx-auto">
-        Your predictions shape the story. Every vote counts.
+        Every vote shapes the story. The show streams live before kickoff.
       </p>
       <router-link to="/predict" class="btn-primary">
-        Make Your Predictions
+        Cast Your Votes
       </router-link>
     </section>
   </div>

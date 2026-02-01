@@ -53,7 +53,7 @@
 
       <!-- Footer -->
       <p class="text-center text-slate-500 text-sm mt-6">
-        More rewards coming soon! Keep earning XP with correct predictions.
+        More rewards coming soon! Keep earning XP by shaping the story.
       </p>
     </div>
   </div>

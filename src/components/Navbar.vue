@@ -21,7 +21,7 @@
             class="text-slate-300 hover:text-white transition"
             :class="{ 'text-white font-semibold': $route.name === 'predict' }"
           >
-            Predict
+            Vote
           </router-link>
           <router-link 
             to="/leaderboard" 
@@ -126,7 +126,7 @@
           class="block py-2 text-slate-300 hover:text-white"
           @click="mobileMenuOpen = false"
         >
-          Predict
+          Vote
         </router-link>
         <router-link 
           to="/leaderboard" 
