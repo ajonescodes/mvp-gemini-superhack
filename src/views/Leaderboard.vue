@@ -3,7 +3,7 @@
     <div class="max-w-2xl mx-auto">
       <!-- Header -->
       <div class="text-center mb-8">
-        <h1 class="text-3xl font-bold text-white mb-2">Leaderboard</h1>
+        <h1 class="font-display text-4xl sm:text-5xl text-white mb-2 tracking-wide">LEADERBOARD</h1>
         <p class="text-slate-400">Top storytellers shaping the show</p>
       </div>
 

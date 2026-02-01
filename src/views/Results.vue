@@ -3,7 +3,7 @@
     <div class="max-w-2xl mx-auto">
       <!-- Header -->
       <div class="text-center mb-8">
-        <h1 class="text-3xl font-bold text-white mb-2">Your Results</h1>
+        <h1 class="font-display text-4xl sm:text-5xl text-white mb-2 tracking-wide">YOUR RESULTS</h1>
         <p class="text-slate-400">See how your votes shaped the show</p>
       </div>
 
@@ -31,15 +31,15 @@
       <div v-else>
         <!-- Final Score Card -->
         <div v-if="results.results.final_score" class="card mb-8 text-center">
-          <p class="text-orange-500 font-bold text-sm mb-4">FINAL SCORE</p>
+          <p class="font-display text-orange-500 tracking-widest mb-4">FINAL SCORE</p>
           <div class="flex items-center justify-center gap-8">
             <div>
-              <p class="text-4xl font-black text-white">{{ results.results.final_score.seahawks }}</p>
+              <p class="font-display text-5xl text-white">{{ results.results.final_score.seahawks }}</p>
               <p class="text-slate-400">Seahawks</p>
             </div>
-            <span class="text-2xl text-slate-600">-</span>
+            <span class="font-display text-3xl text-slate-600">-</span>
             <div>
-              <p class="text-4xl font-black text-white">{{ results.results.final_score.patriots }}</p>
+              <p class="font-display text-5xl text-white">{{ results.results.final_score.patriots }}</p>
               <p class="text-slate-400">Patriots</p>
             </div>
           </div>
@@ -75,7 +75,7 @@
         <!-- Watch CTA -->
         <div class="mt-8 text-center">
           <router-link to="/watch" class="btn-primary">
-            Watch the Show
+            WATCH THE SHOW
           </router-link>
         </div>
       </div>

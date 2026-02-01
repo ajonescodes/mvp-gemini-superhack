@@ -10,7 +10,7 @@
     <div class="max-w-2xl mx-auto">
       <!-- Header -->
       <div class="text-center mb-8">
-        <h1 class="text-3xl font-bold text-white mb-2">Write the Story</h1>
+        <h1 class="font-display text-4xl sm:text-5xl text-white mb-2 tracking-wide">WRITE THE STORY</h1>
         <p class="text-slate-400">
           {{ auth.isLoggedIn ? 'Cast your votes to shape the pregame show' : 'Cast your votes, then sign in to submit' }}
         </p>
@@ -41,7 +41,7 @@
             View Your Results
           </router-link>
           <router-link to="/watch" class="btn-primary">
-            Watch Now
+            WATCH NOW
           </router-link>
         </div>
       </div>

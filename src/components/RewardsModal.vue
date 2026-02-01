@@ -20,10 +20,10 @@
 
       <!-- Header -->
       <div class="text-center mb-6">
-        <h2 class="text-2xl font-bold text-white mb-2">Redeem Your Points</h2>
+        <h2 class="font-display text-3xl text-white mb-2 tracking-wide">REDEEM YOUR POINTS</h2>
         <div class="flex items-center justify-center gap-2 text-3xl">
           <span class="text-orange-500">🏆</span>
-          <span class="font-bold text-white">{{ auth.user?.xp_total || 0 }} XP</span>
+          <span class="font-display text-4xl text-white">{{ auth.user?.xp_total || 0 }} XP</span>
         </div>
       </div>
 

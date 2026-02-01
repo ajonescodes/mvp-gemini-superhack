@@ -9,7 +9,7 @@
         <!-- Header with gradient -->
         <div class="bg-gradient-to-r from-orange-500 to-amber-500 p-6 text-center">
           <div class="text-4xl mb-2">⚡</div>
-          <h2 class="text-2xl font-bold text-white">Become a Superfan</h2>
+          <h2 class="font-display text-3xl text-white tracking-wide">BECOME A SUPERFAN</h2>
           <p class="text-orange-100 text-sm mt-1">Get more influence on the pregame show</p>
         </div>
 

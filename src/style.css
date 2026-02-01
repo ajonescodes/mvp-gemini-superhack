@@ -8,15 +8,23 @@ html {
 }
 
 body {
-  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+  font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+}
+
+/* Display font for headers */
+.font-display {
+  font-family: 'Bebas Neue', Impact, sans-serif;
+  letter-spacing: 0.05em;
 }
 
 /* Custom utility classes */
 @layer components {
   .btn-primary {
-    @apply inline-block px-8 py-4 bg-orange-500 hover:bg-orange-600 text-white text-xl font-bold rounded-full transition transform hover:scale-105;
+    @apply inline-block px-8 py-4 bg-orange-500 hover:bg-orange-600 text-white text-xl rounded-full transition transform hover:scale-105;
+    font-family: 'Bebas Neue', Impact, sans-serif;
+    letter-spacing: 0.1em;
   }
   
   .btn-secondary {

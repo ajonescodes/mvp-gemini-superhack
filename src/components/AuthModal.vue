@@ -19,8 +19,8 @@
       </button>
 
       <!-- Header -->
-      <h2 class="text-2xl font-bold text-white mb-2">
-        {{ isLogin ? 'Welcome Back' : 'Create Account' }}
+      <h2 class="font-display text-3xl text-white mb-2 tracking-wide">
+        {{ isLogin ? 'WELCOME BACK' : 'CREATE ACCOUNT' }}
       </h2>
       <p class="text-slate-400 mb-6">
         {{ isLogin ? 'Sign in to submit your votes' : 'Join to shape the show and earn XP' }}

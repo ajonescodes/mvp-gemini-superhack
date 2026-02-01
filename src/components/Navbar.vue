@@ -4,7 +4,7 @@
       <div class="flex items-center justify-between h-16">
         <!-- Logo -->
         <router-link to="/" class="flex items-center gap-2">
-          <span class="text-2xl font-black text-white">PROMPT<span class="text-orange-500">PLAY</span></span>
+          <span class="font-display text-3xl text-white tracking-wider">PROMPT<span class="text-orange-500">PLAY</span></span>
         </router-link>
 
         <!-- Desktop Navigation -->

@@ -3,7 +3,7 @@
     <div class="max-w-4xl mx-auto">
       <!-- Header -->
       <div class="text-center mb-8">
-        <h1 class="text-3xl font-bold text-white mb-2">The Game Before the Game</h1>
+        <h1 class="font-display text-4xl sm:text-5xl text-white mb-2 tracking-wide">THE GAME BEFORE THE GAME</h1>
         <p class="text-slate-400">The AI-generated pregame show written by fans</p>
       </div>
 
@@ -16,7 +16,7 @@
       <!-- No Video State -->
       <div v-else-if="!videoUrl" class="text-center py-20">
         <div class="text-6xl mb-4">🎬</div>
-        <h2 class="text-xl text-white mb-2">Show Coming Soon</h2>
+        <h2 class="font-display text-2xl text-white mb-2 tracking-wide">SHOW COMING SOON</h2>
         <p class="text-slate-400 mb-4">
           {{ matchups.hasActiveMatchup 
             ? 'The pregame show is being generated. Check back soon!' 
@@ -47,9 +47,9 @@
         <div class="card mb-8">
           <div class="flex items-center justify-between mb-4">
             <div>
-              <p class="text-orange-500 font-bold text-sm">SUPER BOWL LX</p>
-              <h2 class="text-xl text-white font-bold">
-                {{ matchups.currentMatchup?.home_team }} vs {{ matchups.currentMatchup?.away_team }}
+              <p class="font-display text-orange-500 tracking-widest">SUPER BOWL LX</p>
+              <h2 class="font-display text-2xl text-white tracking-wide">
+                {{ matchups.currentMatchup?.home_team }} VS {{ matchups.currentMatchup?.away_team }}
               </h2>
             </div>
             <p class="text-slate-400">February 8, 2026</p>

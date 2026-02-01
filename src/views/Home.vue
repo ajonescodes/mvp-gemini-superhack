@@ -21,11 +21,11 @@
       
       <!-- Main content -->
       <div class="relative z-10 text-center px-4 max-w-4xl mx-auto">
-        <h1 class="text-5xl sm:text-6xl md:text-8xl font-black text-white mb-4 animate-pulse-glow">
+        <h1 class="font-display text-6xl sm:text-7xl md:text-9xl text-white mb-4 animate-pulse-glow tracking-wider">
           PROMPT<span class="text-orange-500">PLAY</span>
         </h1>
-        <p class="text-xl md:text-2xl text-slate-300 mb-8 max-w-2xl mx-auto">
-          The Game Before the Game
+        <p class="font-display text-2xl md:text-3xl text-slate-300 mb-8 max-w-2xl mx-auto tracking-wide">
+          THE GAME BEFORE THE GAME
         </p>
         <p class="text-slate-400 mb-8 max-w-xl mx-auto">
           Write the script for the ultimate anime-style pregame show, streamed live on YouTube before kickoff. 
@@ -35,7 +35,7 @@
           to="/predict"
           class="btn-primary text-lg"
         >
-          Write Your Story
+          WRITE YOUR STORY
         </router-link>
       </div>
       
@@ -49,7 +49,7 @@
 
     <!-- How It Works -->
     <section class="py-20 px-4">
-      <h2 class="text-4xl font-bold text-center text-white mb-4">How It Works</h2>
+      <h2 class="font-display text-5xl text-center text-white mb-4 tracking-wide">HOW IT WORKS</h2>
       <p class="text-slate-400 text-center mb-16 max-w-xl mx-auto">
         Three simple steps to co-write the pregame show everyone will be watching
       </p>
@@ -59,7 +59,7 @@
             🎯
           </div>
           <div class="text-orange-500 font-bold text-sm mb-2">STEP 1</div>
-          <h3 class="text-xl font-bold text-white mb-2">VOTE</h3>
+          <h3 class="font-display text-2xl text-white mb-2 tracking-wide">VOTE</h3>
           <p class="text-slate-400">
             Decide who scores first, who wins, and more. Pick superpowers for each team!
           </p>
@@ -69,7 +69,7 @@
             🤖
           </div>
           <div class="text-orange-500 font-bold text-sm mb-2">STEP 2</div>
-          <h3 class="text-xl font-bold text-white mb-2">AI GENERATES</h3>
+          <h3 class="font-display text-2xl text-white mb-2 tracking-wide">AI GENERATES</h3>
           <p class="text-slate-400">
             Community votes shape the story. AI creates an anime-style video of the game you wrote.
           </p>
@@ -79,7 +79,7 @@
             🏆
           </div>
           <div class="text-orange-500 font-bold text-sm mb-2">STEP 3</div>
-          <h3 class="text-xl font-bold text-white mb-2">WATCH LIVE</h3>
+          <h3 class="font-display text-2xl text-white mb-2 tracking-wide">WATCH LIVE</h3>
           <p class="text-slate-400">
             Tune in to YouTube before kickoff. See YOUR story play out live!
           </p>
@@ -90,7 +90,7 @@
     <!-- Current Matchup -->
     <section class="py-20 px-4 bg-slate-800/50">
       <div class="max-w-3xl mx-auto text-center">
-        <p class="text-orange-500 font-bold mb-4 tracking-wider">SUPER BOWL LX</p>
+        <p class="font-display text-orange-500 text-xl mb-4 tracking-widest">SUPER BOWL LX</p>
         
         <!-- Teams -->
         <div class="flex items-center justify-center gap-4 sm:gap-8 mb-6">
@@ -102,7 +102,7 @@
             <p class="text-slate-400 text-sm">14-3</p>
           </div>
           
-          <span class="text-4xl sm:text-5xl text-slate-600 font-bold">VS</span>
+          <span class="font-display text-5xl sm:text-6xl text-slate-600">VS</span>
           
           <div class="text-center">
             <div class="w-20 h-20 sm:w-24 sm:h-24 mx-auto mb-2 bg-patriots-navy rounded-xl flex items-center justify-center">
@@ -137,14 +137,14 @@
             to="/predict" 
             class="btn-primary"
           >
-            Join the Script
+            JOIN THE SCRIPT
           </router-link>
           <router-link 
             v-else-if="matchups.isComplete"
             to="/watch" 
             class="btn-primary"
           >
-            Watch Now
+            WATCH NOW
           </router-link>
           <p v-else class="text-slate-400">
             Predictions closed. Generating video...
@@ -159,7 +159,7 @@
     <!-- Features Preview -->
     <section class="py-20 px-4">
       <div class="max-w-5xl mx-auto">
-        <h2 class="text-3xl font-bold text-center text-white mb-12">Anime-Style Action</h2>
+        <h2 class="font-display text-4xl text-center text-white mb-12 tracking-wide">ANIME-STYLE ACTION</h2>
         <div class="grid md:grid-cols-2 gap-8">
           <div class="rounded-xl overflow-hidden">
             <img 
@@ -189,12 +189,12 @@
 
     <!-- Final CTA -->
     <section class="py-20 px-4 text-center">
-      <h2 class="text-3xl font-bold text-white mb-4">Ready to Write the Pregame Show?</h2>
+      <h2 class="font-display text-4xl text-white mb-4 tracking-wide">READY TO WRITE THE PREGAME SHOW?</h2>
       <p class="text-slate-400 mb-8 max-w-md mx-auto">
         Every vote shapes the story. The show streams live before kickoff.
       </p>
       <router-link to="/predict" class="btn-primary">
-        Cast Your Votes
+        CAST YOUR VOTES
       </router-link>
     </section>
   </div>
